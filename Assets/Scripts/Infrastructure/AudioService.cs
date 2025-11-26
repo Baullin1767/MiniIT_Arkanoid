@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace MiniIT.ARKANOID
 {
@@ -14,18 +15,34 @@ namespace MiniIT.ARKANOID
             LaunchSound
         }
         
-        private readonly AudioSource mainAudioSource;
-        private readonly AudioSource soundAudioSource;
-        private readonly Dictionary<SoundType, AudioClip> audioClips;
+        private readonly AudioSource mainAudioSource = null;
+        private readonly AudioSource soundAudioSource = null;
+        private readonly Dictionary<SoundType, AudioClip> audioClips = new Dictionary<SoundType, AudioClip>();
+        private readonly SignalBus signalBus = null;
 
         public AudioService(AudioSource mainAudioSource, AudioSource soundAudioSource,
-            Dictionary<SoundType, AudioClip> audioClips)
+            Dictionary<SoundType, AudioClip> audioClips, SignalBus signalBus)
         {
             this.mainAudioSource = mainAudioSource;
             this.soundAudioSource = soundAudioSource;
             this.audioClips = audioClips;
-            
+            this.signalBus = signalBus;
+
             mainAudioSource.clip = audioClips[SoundType.MainTheme];
+            
+            signalBus.Subscribe<LevelResetSignal>(StartMainTheme);
+            signalBus.Subscribe<GameOverSignal>(() =>
+            {
+                StopMainTheme();
+                PlaySound(SoundType.GameOverSound);
+            });
+            
+            signalBus.Subscribe<LevelCompletedSignal>(() =>
+            {
+                StopMainTheme();
+                PlaySound(SoundType.WinSound);
+            });
+
         }
 
         public void StartMainTheme()

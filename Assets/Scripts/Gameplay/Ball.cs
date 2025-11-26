@@ -14,12 +14,15 @@ namespace MiniIT.ARKANOID
         private Rigidbody2D body = null;
 
         private bool launched = false;
+
+        private AudioService _audioService;
         
         [Inject]
-        public void Construct(GameSettings gameSettings)
+        public void Construct(GameSettings gameSettings, AudioService audioService)
         {
             launchSpeed = gameSettings.launchSpeed;
             wallBounceMultiplier = gameSettings.wallBounceMultiplier;
+            _audioService = audioService;
         }
         private void Awake()
         {
@@ -42,6 +45,7 @@ namespace MiniIT.ARKANOID
             Vector2 normalizedDirection = direction.normalized;
             body.linearVelocity = normalizedDirection * launchSpeed;
             launched = true;
+            _audioService.PlaySound(AudioService.SoundType.LaunchSound);
         }
 
         public void Stop()
@@ -84,6 +88,7 @@ namespace MiniIT.ARKANOID
             }
 
             MaintainSpeedAfterCollision();
+            _audioService.PlaySound(AudioService.SoundType.HitSound);
         }
 
         private void BounceFromPaddle(Collision2D collision, Paddle paddle)
@@ -107,6 +112,8 @@ namespace MiniIT.ARKANOID
 
             Vector2 direction = new Vector2(offset, 1.0f).normalized;
             body.linearVelocity = direction * launchSpeed;
+            
+            _audioService.PlaySound(AudioService.SoundType.LaunchSound);
         }
 
         private void MaintainSpeedAfterCollision()

@@ -71,6 +71,8 @@ namespace MiniIT.ARKANOID
 
         protected virtual void DestroyBrick()
         {
+            Unregister();
+
             if (signalBus != null)
             {
                 destroyedSignal.Brick = this;
@@ -78,7 +80,6 @@ namespace MiniIT.ARKANOID
                 signalBus.Fire(destroyedSignal);
             }
 
-            Unregister();
             gameObject.SetActive(false);
         }
 

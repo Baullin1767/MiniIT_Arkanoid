@@ -6,8 +6,6 @@ namespace MiniIT.ARKANOID
 {
     public class GameInstaller : MonoInstaller
     {
-        [SerializeField]
-        private bool useMobileInput = false;
 
         [SerializeField]
         private GameSettings gameSettings = null;
@@ -42,7 +40,7 @@ namespace MiniIT.ARKANOID
 
         private void BindInput()
         {
-            if (useMobileInput)
+            if (UseMobileInput())
             {
                 Container.Bind<IInputService>().To<MobileInputService>().AsSingle();
             }
@@ -50,6 +48,14 @@ namespace MiniIT.ARKANOID
             {
                 Container.Bind<IInputService>().To<DesktopInputService>().AsSingle();
             }
+        }
+
+        private bool UseMobileInput()
+        {
+#if UNITY_EDITOR || PLATFORM_STANDALONE_WIN
+                return false;
+#endif
+            return true;
         }
     }
 }

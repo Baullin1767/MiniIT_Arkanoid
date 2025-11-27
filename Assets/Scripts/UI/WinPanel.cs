@@ -1,7 +1,10 @@
 using System;
+using Doozy.Runtime.UIManager;
+using Doozy.Runtime.UIManager.Components;
+using Doozy.Runtime.UIManager.Containers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace MiniIT.ARKANOID
 {
@@ -11,9 +14,17 @@ namespace MiniIT.ARKANOID
         private TMP_Text scoreText = null;
 
         [SerializeField]
-        private Button restartButton = null;
+        private UIButton restartButton = null;
+        
+        private UIView view = null;
 
         private Action restartCallback = null;
+
+        private void Awake()
+        {
+            view =  GetComponent<UIView>();
+            view.Hide();
+        }
 
         public void Show(int score)
         {
@@ -21,13 +32,13 @@ namespace MiniIT.ARKANOID
             {
                 scoreText.text = score.ToString();
             }
-
-            gameObject.SetActive(true);
+            
+            view.Show();
         }
 
         public void Hide()
         {
-            gameObject.SetActive(false);
+            view.Hide();
         }
 
         public void SetRestartCallback(Action callback)
@@ -39,7 +50,8 @@ namespace MiniIT.ARKANOID
         {
             if (restartButton != null)
             {
-                restartButton.onClick.AddListener(OnRestartClicked);
+                restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event ??= new UnityEvent();
+                restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.AddListener(OnRestartClicked);
             }
         }
 
@@ -47,7 +59,7 @@ namespace MiniIT.ARKANOID
         {
             if (restartButton != null)
             {
-                restartButton.onClick.RemoveListener(OnRestartClicked);
+                restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.RemoveListener(OnRestartClicked);
             }
         }
 

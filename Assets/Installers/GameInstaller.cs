@@ -42,7 +42,7 @@ namespace MiniIT.ARKANOID
         {
             if (UseMobileInput())
             {
-                Container.Bind<IInputService>().To<MobileInputService>().AsSingle();
+                Container.BindInterfacesAndSelfTo<MobileInputService>().AsSingle();
             }
             else
             {
@@ -52,10 +52,11 @@ namespace MiniIT.ARKANOID
 
         private bool UseMobileInput()
         {
-#if UNITY_EDITOR || PLATFORM_STANDALONE_WIN
-                return false;
-#endif
+#if UNITY_EDITOR
             return true;
+#else
+            return Application.isMobilePlatform;
+#endif
         }
     }
 }

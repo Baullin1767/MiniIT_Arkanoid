@@ -19,6 +19,10 @@ namespace MiniIT.ARKANOID
         private void Awake()
         {
             view = GetComponent<UIView>();
+        }
+
+        private void Start()
+        {
             view.Hide();
         }
 

@@ -1,32 +1,45 @@
-using UnityEngine;
-
 namespace MiniIT.ARKANOID
 {
     public class MobileInputService : IInputService
     {
+        private bool isLeftPressed = false;
+        private bool isRightPressed = false;
+        private bool launchQueued = false;
+
         public float GetMovement()
         {
-            if (Input.touchCount == 0)
+            if (isLeftPressed == isRightPressed)
             {
                 return 0.0f;
             }
 
-            Touch touch = Input.GetTouch(0);
-            float halfWidth = Screen.width * 0.5f;
-            float normalized = (touch.position.x - halfWidth) / halfWidth;
-
-            return Mathf.Clamp(normalized, -1.0f, 1.0f);
+            return isLeftPressed ? -1.0f : 1.0f;
         }
 
         public bool IsLaunchRequested()
         {
-            if (Input.touchCount == 0)
+            if (!launchQueued)
             {
                 return false;
             }
 
-            Touch touch = Input.GetTouch(0);
-            return touch.phase == TouchPhase.Began;
+            launchQueued = false;
+            return true;
+        }
+
+        public void SetLeftPressed(bool isPressed)
+        {
+            isLeftPressed = isPressed;
+        }
+
+        public void SetRightPressed(bool isPressed)
+        {
+            isRightPressed = isPressed;
+        }
+
+        public void RequestLaunch()
+        {
+            launchQueued = true;
         }
     }
 }

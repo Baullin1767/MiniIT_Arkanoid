@@ -16,4 +16,4 @@ MonoBehaviour:
   speed: 20
   limitX: 7.5
   launchSpeed: 15
-  wallBounceMultiplier: 0.9
+  wallBounceMultiplier: 0.5

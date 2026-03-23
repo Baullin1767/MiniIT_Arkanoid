@@ -48,12 +48,17 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
-            Hit();
+            HandleBallHit();
         }
 
         protected virtual void OnDestroy()
         {
             Unregister();
+        }
+
+        public void HandleBallHit()
+        {
+            Hit();
         }
 
         private void Hit()

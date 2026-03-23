@@ -15,7 +15,7 @@ MonoBehaviour:
   defaultLives: 5
   speed: 10
   limitX: 7.5
-  launchSpeed: 40
+  launchSpeed: 8
   wallBounceMultiplier: 0.2
   ballSprites:
   - {fileID: -626296687784120458, guid: c66e3a034c989c84b862fee6947e388b, type: 3}

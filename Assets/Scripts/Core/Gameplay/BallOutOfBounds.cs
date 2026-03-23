@@ -16,6 +16,11 @@ namespace MiniIT.ARKANOID
         private void OnTriggerEnter2D(Collider2D other)
         {
             Ball ball = other.GetComponentInParent<Ball>();
+            HandleBallEntered(ball);
+        }
+
+        public void HandleBallEntered(Ball ball)
+        {
             if (ball == null)
             {
                 return;

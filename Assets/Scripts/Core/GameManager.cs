@@ -33,6 +33,16 @@ namespace MiniIT.ARKANOID
             RestartGame(true);
         }
 
+        public void PauseGame()
+        {
+            Time.timeScale = 0f;
+        }
+
+        public void ResumeGame()
+        {
+            Time.timeScale = 1f;
+        }
+
         private void HandleBrickDestroyed(BrickDestroyedSignal signal)
         {
             score += signal.Reward;
@@ -54,13 +64,13 @@ namespace MiniIT.ARKANOID
             if (lives <= 0)
             {
                 signalBus.Fire<GameOverSignal>();
-                Time.timeScale = 0f;
+                PauseGame();
             }
         }
 
         public void RestartGame(bool resetScore)
         {
-            Time.timeScale = 1f;
+            ResumeGame();
             if (resetScore)
             {
                 score = 0;
@@ -75,9 +85,21 @@ namespace MiniIT.ARKANOID
             signalBus.Fire<LevelResetSignal>();
         }
 
+        public void RestartCurrentRound()
+        {
+            ResumeGame();
+            lives = DefaultLives;
+
+            signalBus.Fire(new ScoreChangedSignal(score));
+            signalBus.Fire(new LivesChangedSignal(lives));
+
+            levelManager.ResetLevel(true);
+            signalBus.Fire<LevelResetSignal>();
+        }
+
         private void CompleteLevel()
         {
-            Time.timeScale = 0f;
+            PauseGame();
             signalBus.Fire<LevelCompletedSignal>();
         }
     }

@@ -10,6 +10,7 @@ namespace MiniIT.ARKANOID
             Container.Bind<HUDView>().FromComponentInHierarchy().AsSingle();
             Container.Bind<GameOverPanel>().FromComponentInHierarchy().AsSingle();
             Container.Bind<WinPanel>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<PausePanel>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

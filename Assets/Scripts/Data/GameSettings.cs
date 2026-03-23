@@ -13,5 +13,6 @@ namespace Data
         [Header("Ball Settings")]
         public float launchSpeed = 8.0f;
         public float wallBounceMultiplier = 0.9f;
+        public Sprite[] ballSprites;
     }
 }

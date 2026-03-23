@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace MiniIT.ARKANOID
@@ -14,9 +15,13 @@ namespace MiniIT.ARKANOID
         [SerializeField]
         private WinPanel winPanel = null;
 
+        [SerializeField]
+        private PausePanel pausePanel = null;
+
         private SignalBus signalBus = null;
         private GameManager gameManager = null;
         private int lastScore = 0;
+        private const string MainMenuSceneName = "MainMenu";
 
         [Inject]
         public void Construct(SignalBus signalBus, GameManager gameManager)
@@ -29,10 +34,12 @@ namespace MiniIT.ARKANOID
         {
             Subscribe();
             BindRestartButtons();
+            BindPauseButtons();
         }
 
         private void OnDisable()
         {
+            UnbindPauseButtons();
             UnbindRestartButtons();
             Unsubscribe();
         }
@@ -82,6 +89,11 @@ namespace MiniIT.ARKANOID
             {
                 winPanel.Hide();
             }
+
+            if (pausePanel != null)
+            {
+                pausePanel.Hide();
+            }
         }
 
         private void OnRestartFromWin()
@@ -100,6 +112,40 @@ namespace MiniIT.ARKANOID
             {
                 gameManager.RestartGame(true);
             }
+        }
+
+        private void OnPauseRequested()
+        {
+            if (gameManager == null || pausePanel == null)
+            {
+                return;
+            }
+
+            gameManager.PauseGame();
+            pausePanel.Show();
+        }
+
+        private void OnResumeFromPause()
+        {
+            if (pausePanel != null)
+            {
+                pausePanel.Hide();
+            }
+
+            gameManager?.ResumeGame();
+        }
+
+        private void OnRestartFromPause()
+        {
+            HideAllPanels();
+            gameManager?.RestartCurrentRound();
+        }
+
+        private void OnMenuFromPause()
+        {
+            HideAllPanels();
+            gameManager?.ResumeGame();
+            SceneManager.LoadScene(MainMenuSceneName);
         }
 
         private void Subscribe()
@@ -168,6 +214,21 @@ namespace MiniIT.ARKANOID
             }
         }
 
+        private void BindPauseButtons()
+        {
+            if (hudView != null)
+            {
+                hudView.SetPauseCallback(OnPauseRequested);
+            }
+
+            if (pausePanel != null)
+            {
+                pausePanel.SetResumeCallback(OnResumeFromPause);
+                pausePanel.SetRestartCallback(OnRestartFromPause);
+                pausePanel.SetMenuCallback(OnMenuFromPause);
+            }
+        }
+
         private void UnbindRestartButtons()
         {
             if (winPanel != null)
@@ -178,6 +239,21 @@ namespace MiniIT.ARKANOID
             if (gameOverPanel != null)
             {
                 gameOverPanel.SetRestartCallback(null);
+            }
+        }
+
+        private void UnbindPauseButtons()
+        {
+            if (hudView != null)
+            {
+                hudView.SetPauseCallback(null);
+            }
+
+            if (pausePanel != null)
+            {
+                pausePanel.SetResumeCallback(null);
+                pausePanel.SetRestartCallback(null);
+                pausePanel.SetMenuCallback(null);
             }
         }
     }

@@ -27,6 +27,7 @@ namespace MiniIT.ARKANOID
         private readonly Dictionary<BrickType, Queue<BrickBase>> pool = new Dictionary<BrickType, Queue<BrickBase>>();
         private List<BrickBase> bricks = null;
         private bool poolPrewarmed = false;
+        private BrickLayoutAsset currentLayout = null;
 
         private List<BrickBase> Bricks
         {
@@ -45,9 +46,10 @@ namespace MiniIT.ARKANOID
         public void Construct(DiContainer container)
         {
             this.container = container;
+            // Time.timeScale = 0.1f;
         }
 
-        public void ResetLevel()
+        public void ResetLevel(bool reuseCurrentLayout = false)
         {
             if (bricksRoot == null)
             {
@@ -56,12 +58,14 @@ namespace MiniIT.ARKANOID
             PrewarmPool();
             ReturnActiveBricksToPool();
 
-            BrickLayoutAsset layout = PickLayout();
+            BrickLayoutAsset layout = reuseCurrentLayout ? currentLayout : PickLayout();
             if (layout == null)
             {
+                currentLayout = null;
                 return;
             }
 
+            currentLayout = layout;
             SpawnLayout(layout);
         }
 

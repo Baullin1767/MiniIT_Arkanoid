@@ -150,6 +150,15 @@ public static class SpriteFixerTool
             new SpriteAssignment { gameObjectPath = "BaseUI/GameOverPanel/RestartButton", assetPath = "Assets/PNG/btn/restart.png", subSpriteName = "restart_0" },
             new SpriteAssignment { gameObjectPath = "BaseUI/GameOverPanel/MenuButton", assetPath = "Assets/PNG/btn/menu.png", subSpriteName = "menu_0" },
 
+            // PausePanel
+            new SpriteAssignment { gameObjectPath = "BaseUI/PausePanel/PanelBG", assetPath = "Assets/PNG/pause/bg.png", subSpriteName = "bg_0" },
+            new SpriteAssignment { gameObjectPath = "BaseUI/PausePanel/HeaderImage", assetPath = "Assets/PNG/pause/header.png", subSpriteName = "header_0" },
+            new SpriteAssignment { gameObjectPath = "BaseUI/PausePanel/TextImage", assetPath = "Assets/PNG/pause/text.png", subSpriteName = "text_0" },
+            new SpriteAssignment { gameObjectPath = "BaseUI/PausePanel/TableBG", assetPath = "Assets/PNG/pause/table.png", subSpriteName = "table_0" },
+            new SpriteAssignment { gameObjectPath = "BaseUI/PausePanel/ResumeButton", assetPath = "Assets/PNG/btn/play.png", subSpriteName = "play_0" },
+            new SpriteAssignment { gameObjectPath = "BaseUI/PausePanel/RestartButton", assetPath = "Assets/PNG/btn/restart.png", subSpriteName = "restart_0" },
+            new SpriteAssignment { gameObjectPath = "BaseUI/PausePanel/MenuButton", assetPath = "Assets/PNG/btn/menu.png", subSpriteName = "menu_0" },
+
             // HUD
             new SpriteAssignment { gameObjectPath = "HUDView/PauseButton", assetPath = "Assets/PNG/btn/pause.png", subSpriteName = "pause_0" },
         };

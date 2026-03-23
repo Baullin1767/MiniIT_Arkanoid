@@ -15,6 +15,8 @@ namespace MiniIT.ARKANOID
 
         [SerializeField]
         private UIButton restartButton = null;
+        [SerializeField]
+        private UIButton nextButton = null;
         
         private UIView view = null;
 
@@ -53,6 +55,11 @@ namespace MiniIT.ARKANOID
                 restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event ??= new UnityEvent();
                 restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.AddListener(OnRestartClicked);
             }
+            if (nextButton != null)
+            {
+                nextButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event ??= new UnityEvent();
+                nextButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.AddListener(OnRestartClicked);
+            }
         }
 
         private void OnDisable()
@@ -60,6 +67,10 @@ namespace MiniIT.ARKANOID
             if (restartButton != null)
             {
                 restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.RemoveListener(OnRestartClicked);
+            }
+            if (nextButton != null)
+            {
+                nextButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.RemoveListener(OnRestartClicked);
             }
         }
 

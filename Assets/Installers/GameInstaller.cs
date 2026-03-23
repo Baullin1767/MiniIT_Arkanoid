@@ -53,7 +53,7 @@ namespace MiniIT.ARKANOID
         private bool UseMobileInput()
         {
 #if UNITY_EDITOR
-            return true;
+            return false;
 #else
             return Application.isMobilePlatform;
 #endif

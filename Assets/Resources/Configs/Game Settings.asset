@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Game Settings
   m_EditorClassIdentifier: Assembly-CSharp::Data.GameSettings
   defaultLives: 5
-  speed: 20
+  speed: 10
   limitX: 7.5
-  launchSpeed: 15
-  wallBounceMultiplier: 0.5
+  launchSpeed: 40
+  wallBounceMultiplier: 0.2
+  ballSprites:
+  - {fileID: -626296687784120458, guid: c66e3a034c989c84b862fee6947e388b, type: 3}
+  - {fileID: -6785504108125916324, guid: c66e3a034c989c84b862fee6947e388b, type: 3}

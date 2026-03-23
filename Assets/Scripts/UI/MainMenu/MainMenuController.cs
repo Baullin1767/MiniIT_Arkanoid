@@ -21,6 +21,9 @@ namespace MiniIT.ARKANOID
         private UIButton privacyPolicyButton = null;
 
         [SerializeField]
+        private UIButton skinButton = null;
+
+        [SerializeField]
         private WindowsManager windowsManager = null;
 
         private const string GameSceneName = "Game";
@@ -31,6 +34,7 @@ namespace MiniIT.ARKANOID
             RegisterButton(leaderBoardButton, OnLeaderBoardClicked);
             RegisterButton(aboutButton, OnAboutClicked);
             RegisterButton(privacyPolicyButton, OnPrivacyPolicyClicked);
+            RegisterButton(skinButton, OnSkinClicked);
         }
 
         private void OnDisable()
@@ -39,6 +43,7 @@ namespace MiniIT.ARKANOID
             UnregisterButton(leaderBoardButton, OnLeaderBoardClicked);
             UnregisterButton(aboutButton, OnAboutClicked);
             UnregisterButton(privacyPolicyButton, OnPrivacyPolicyClicked);
+            UnregisterButton(skinButton, OnSkinClicked);
         }
 
         private void RegisterButton(UIButton button, UnityAction handler)
@@ -88,6 +93,14 @@ namespace MiniIT.ARKANOID
             if (windowsManager != null)
             {
                 windowsManager.ShowPrivacyPolicy();
+            }
+        }
+
+        private void OnSkinClicked()
+        {
+            if (windowsManager != null)
+            {
+                windowsManager.ShowSkin();
             }
         }
     }

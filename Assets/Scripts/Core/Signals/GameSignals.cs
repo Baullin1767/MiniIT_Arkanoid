@@ -12,6 +12,18 @@ namespace MiniIT.ARKANOID
     {
     }
 
+    public class MazeStartedSignal
+    {
+    }
+
+    public class MazeCompletedSignal
+    {
+    }
+
+    public class MazeFailedSignal
+    {
+    }
+
     public class ScoreChangedSignal
     {
         public int Score { get; private set; }

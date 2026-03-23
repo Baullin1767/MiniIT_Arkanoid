@@ -18,6 +18,7 @@ namespace MiniIT.ARKANOID
 
         private IInputService inputService = null;
         private SignalBus signalBus = null;
+        private bool isMazeActive = false;
         
         private Vector2 basePosition = new Vector2(0, 0);
 
@@ -38,17 +39,42 @@ namespace MiniIT.ARKANOID
                 body = GetComponent<Rigidbody2D>();
                 basePosition = body.position;
             }
-            signalBus.Subscribe<LevelResetSignal>(ResetPosition);
         }
 
-        private void FixedUpdate()
+        private void OnEnable()
         {
-            if (inputService == null)
+            if (signalBus == null)
             {
                 return;
             }
 
-            float input = inputService.GetMovement();
+            signalBus.Subscribe<LevelResetSignal>(ResetPosition);
+            signalBus.Subscribe<MazeStartedSignal>(OnMazeStarted);
+            signalBus.Subscribe<MazeCompletedSignal>(OnMazeEnded);
+            signalBus.Subscribe<MazeFailedSignal>(OnMazeEnded);
+        }
+
+        private void OnDisable()
+        {
+            if (signalBus == null)
+            {
+                return;
+            }
+
+            signalBus.Unsubscribe<LevelResetSignal>(ResetPosition);
+            signalBus.Unsubscribe<MazeStartedSignal>(OnMazeStarted);
+            signalBus.Unsubscribe<MazeCompletedSignal>(OnMazeEnded);
+            signalBus.Unsubscribe<MazeFailedSignal>(OnMazeEnded);
+        }
+
+        private void FixedUpdate()
+        {
+            if (inputService == null || isMazeActive)
+            {
+                return;
+            }
+
+            float input = inputService.GetMoveInput().x;
 
             Move(input);
         }
@@ -71,6 +97,16 @@ namespace MiniIT.ARKANOID
         private void ResetPosition()
         {
             body.position = basePosition;
+        }
+
+        private void OnMazeStarted()
+        {
+            isMazeActive = true;
+        }
+
+        private void OnMazeEnded()
+        {
+            isMazeActive = false;
         }
     }
 }

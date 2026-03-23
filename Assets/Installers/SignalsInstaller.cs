@@ -11,6 +11,9 @@ namespace MiniIT.ARKANOID
             Container.DeclareSignal<GameOverSignal>();
             Container.DeclareSignal<LevelCompletedSignal>();
             Container.DeclareSignal<LevelResetSignal>();
+            Container.DeclareSignal<MazeStartedSignal>();
+            Container.DeclareSignal<MazeCompletedSignal>();
+            Container.DeclareSignal<MazeFailedSignal>();
             Container.DeclareSignal<ScoreChangedSignal>();
             Container.DeclareSignal<LivesChangedSignal>();
             Container.DeclareSignal<BrickDestroyedSignal>();

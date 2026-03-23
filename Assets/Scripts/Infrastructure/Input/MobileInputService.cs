@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MiniIT.ARKANOID
 {
     public class MobileInputService : IInputService
@@ -7,21 +9,22 @@ namespace MiniIT.ARKANOID
         private bool isLeftPressed = false;
         private bool isRightPressed = false;
         private bool launchQueued = false;
-        private float movement;
+        private Vector2 joystickMovement = Vector2.zero;
 
-        public float GetMovement()
+        public Vector2 GetMoveInput()
         {
-            if (movement != 0.0f)
+            if (joystickMovement.sqrMagnitude > 0.0f)
             {
-                return movement;
+                return joystickMovement;
             }
 
             if (isLeftPressed == isRightPressed)
             {
-                return 0.0f;
+                return Vector2.zero;
             }
 
-            return isLeftPressed ? -1.0f : 1.0f;
+            float horizontal = isLeftPressed ? -1.0f : 1.0f;
+            return new Vector2(horizontal, 0.0f);
         }
 
         public bool IsLaunchRequested()
@@ -50,10 +53,18 @@ namespace MiniIT.ARKANOID
             launchQueued = true;
         }
 
-        public void SetMovement(float movementValue)
+        public void SetMovement(Vector2 movementValue)
         {
-            float clamped = UnityEngine.Mathf.Clamp(movementValue, -1.0f, 1.0f);
-            movement = UnityEngine.Mathf.Abs(clamped) < MovementDeadZone ? 0.0f : clamped;
+            Vector2 clamped = Vector2.ClampMagnitude(movementValue, 1.0f);
+            clamped.x = ApplyDeadZone(clamped.x);
+            clamped.y = ApplyDeadZone(clamped.y);
+
+            joystickMovement = clamped;
+        }
+
+        private float ApplyDeadZone(float value)
+        {
+            return Mathf.Abs(value) < MovementDeadZone ? 0.0f : value;
         }
     }
 }

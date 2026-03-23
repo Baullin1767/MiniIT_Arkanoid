@@ -28,7 +28,7 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
-            mobileInputService.SetMovement(joystick.Horizontal);
+            mobileInputService.SetMovement(new Vector2(joystick.Horizontal, joystick.Vertical));
         }
 
         private void OnDisable()
@@ -38,7 +38,7 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
-            mobileInputService.SetMovement(0.0f);
+            mobileInputService.SetMovement(Vector2.zero);
         }
     }
 }

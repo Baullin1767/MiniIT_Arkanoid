@@ -10,12 +10,14 @@ namespace MiniIT.ARKANOID
     public class GameManager
     {
         private int DefaultLives = 3;
+        private const int MazeLifeReward = 1;
 
         private readonly SignalBus signalBus;
         private readonly LevelManager levelManager;
 
         private int lives = 0;
         private int score = 0;
+        private bool isMazeRescueActive = false;
 
         public GameManager(SignalBus signalBus, LevelManager levelManager, GameSettings gameSettings)
         {
@@ -24,6 +26,8 @@ namespace MiniIT.ARKANOID
 
             this.signalBus.Subscribe<BallLostSignal>(HandleBallLost);
             this.signalBus.Subscribe<BrickDestroyedSignal>(HandleBrickDestroyed);
+            this.signalBus.Subscribe<MazeCompletedSignal>(HandleMazeCompleted);
+            this.signalBus.Subscribe<MazeFailedSignal>(HandleMazeFailed);
 
             DefaultLives = gameSettings.defaultLives;
         }
@@ -57,20 +61,53 @@ namespace MiniIT.ARKANOID
 
         private void HandleBallLost()
         {
+            if (isMazeRescueActive)
+            {
+                return;
+            }
+
             lives--;
+            isMazeRescueActive = true;
 
             signalBus.Fire(new LivesChangedSignal(lives));
+            signalBus.Fire<MazeStartedSignal>();
+        }
 
-            if (lives <= 0)
+        private void HandleMazeCompleted()
+        {
+            if (!isMazeRescueActive)
             {
-                signalBus.Fire<GameOverSignal>();
-                PauseGame();
+                return;
             }
+
+            isMazeRescueActive = false;
+            lives += MazeLifeReward;
+
+            signalBus.Fire(new LivesChangedSignal(lives));
+        }
+
+        private void HandleMazeFailed()
+        {
+            if (!isMazeRescueActive)
+            {
+                return;
+            }
+
+            isMazeRescueActive = false;
+
+            if (lives > 0)
+            {
+                return;
+            }
+
+            signalBus.Fire<GameOverSignal>();
+            PauseGame();
         }
 
         public void RestartGame(bool resetScore)
         {
             ResumeGame();
+            isMazeRescueActive = false;
             if (resetScore)
             {
                 score = 0;
@@ -88,6 +125,7 @@ namespace MiniIT.ARKANOID
         public void RestartCurrentRound()
         {
             ResumeGame();
+            isMazeRescueActive = false;
             lives = DefaultLives;
 
             signalBus.Fire(new ScoreChangedSignal(score));
@@ -99,6 +137,7 @@ namespace MiniIT.ARKANOID
 
         private void CompleteLevel()
         {
+            isMazeRescueActive = false;
             PauseGame();
             signalBus.Fire<LevelCompletedSignal>();
         }

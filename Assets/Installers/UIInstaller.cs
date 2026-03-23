@@ -11,6 +11,7 @@ namespace MiniIT.ARKANOID
             Container.Bind<GameOverPanel>().FromComponentInHierarchy().AsSingle();
             Container.Bind<WinPanel>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PausePanel>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<MazeRescuePanel>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

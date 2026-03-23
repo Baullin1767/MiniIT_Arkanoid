@@ -14,6 +14,7 @@ namespace MiniIT.ARKANOID
         private IInputService inputService = null;
         private SignalBus signalBus = null;
         private bool awaitingLaunch = false;
+        private bool isMazeActive = false;
 
         [Inject]
         public void Construct(IInputService inputService, SignalBus signalBus)
@@ -45,6 +46,11 @@ namespace MiniIT.ARKANOID
             }
 
             FollowPaddle();
+
+            if (isMazeActive)
+            {
+                return;
+            }
 
             if (inputService != null && inputService.IsLaunchRequested())
             {
@@ -109,6 +115,9 @@ namespace MiniIT.ARKANOID
 
             signalBus.Subscribe<BallLostSignal>(OnBallLost);
             signalBus.Subscribe<LevelResetSignal>(OnLevelReset);
+            signalBus.Subscribe<MazeStartedSignal>(OnMazeStarted);
+            signalBus.Subscribe<MazeCompletedSignal>(OnMazeEnded);
+            signalBus.Subscribe<MazeFailedSignal>(OnMazeEnded);
         }
 
         private void UnsubscribeSignals()
@@ -120,6 +129,19 @@ namespace MiniIT.ARKANOID
 
             signalBus.Unsubscribe<BallLostSignal>(OnBallLost);
             signalBus.Unsubscribe<LevelResetSignal>(OnLevelReset);
+            signalBus.Unsubscribe<MazeStartedSignal>(OnMazeStarted);
+            signalBus.Unsubscribe<MazeCompletedSignal>(OnMazeEnded);
+            signalBus.Unsubscribe<MazeFailedSignal>(OnMazeEnded);
+        }
+
+        private void OnMazeStarted()
+        {
+            isMazeActive = true;
+        }
+
+        private void OnMazeEnded()
+        {
+            isMazeActive = false;
         }
     }
 }

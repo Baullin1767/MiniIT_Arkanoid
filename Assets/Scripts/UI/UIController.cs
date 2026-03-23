@@ -20,14 +20,17 @@ namespace MiniIT.ARKANOID
 
         private SignalBus signalBus = null;
         private GameManager gameManager = null;
+        private MazeRescuePanel mazeRescuePanel = null;
         private int lastScore = 0;
+        private bool isMazeActive = false;
         private const string MainMenuSceneName = "MainMenu";
 
         [Inject]
-        public void Construct(SignalBus signalBus, GameManager gameManager)
+        public void Construct(SignalBus signalBus, GameManager gameManager, [InjectOptional] MazeRescuePanel mazeRescuePanel)
         {
             this.signalBus = signalBus;
             this.gameManager = gameManager;
+            this.mazeRescuePanel = mazeRescuePanel;
         }
 
         private void OnEnable()
@@ -64,6 +67,8 @@ namespace MiniIT.ARKANOID
 
         private void ShowGameOver()
         {
+            HideMazePanel();
+
             if (gameOverPanel != null)
             {
                 gameOverPanel.Show();
@@ -72,6 +77,8 @@ namespace MiniIT.ARKANOID
 
         private void ShowWin(int score)
         {
+            HideMazePanel();
+
             if (winPanel != null)
             {
                 winPanel.Show(score);
@@ -94,6 +101,8 @@ namespace MiniIT.ARKANOID
             {
                 pausePanel.Hide();
             }
+
+            HideMazePanel();
         }
 
         private void OnRestartFromWin()
@@ -116,7 +125,7 @@ namespace MiniIT.ARKANOID
 
         private void OnPauseRequested()
         {
-            if (gameManager == null || pausePanel == null)
+            if (gameManager == null || pausePanel == null || isMazeActive)
             {
                 return;
             }
@@ -160,6 +169,9 @@ namespace MiniIT.ARKANOID
             signalBus.Subscribe<GameOverSignal>(OnGameOver);
             signalBus.Subscribe<LevelCompletedSignal>(OnLevelCompleted);
             signalBus.Subscribe<LevelResetSignal>(OnLevelReset);
+            signalBus.Subscribe<MazeStartedSignal>(OnMazeStarted);
+            signalBus.Subscribe<MazeCompletedSignal>(OnMazeEnded);
+            signalBus.Subscribe<MazeFailedSignal>(OnMazeEnded);
         }
 
         private void Unsubscribe()
@@ -174,6 +186,9 @@ namespace MiniIT.ARKANOID
             signalBus.Unsubscribe<GameOverSignal>(OnGameOver);
             signalBus.Unsubscribe<LevelCompletedSignal>(OnLevelCompleted);
             signalBus.Unsubscribe<LevelResetSignal>(OnLevelReset);
+            signalBus.Unsubscribe<MazeStartedSignal>(OnMazeStarted);
+            signalBus.Unsubscribe<MazeCompletedSignal>(OnMazeEnded);
+            signalBus.Unsubscribe<MazeFailedSignal>(OnMazeEnded);
         }
 
         private void OnScoreChanged(ScoreChangedSignal signal)
@@ -188,17 +203,30 @@ namespace MiniIT.ARKANOID
 
         private void OnGameOver()
         {
+            isMazeActive = false;
             ShowGameOver();
         }
 
         private void OnLevelCompleted()
         {
+            isMazeActive = false;
             ShowWin(lastScore);
         }
 
         private void OnLevelReset()
         {
+            isMazeActive = false;
             HideAllPanels();
+        }
+
+        private void OnMazeStarted()
+        {
+            isMazeActive = true;
+        }
+
+        private void OnMazeEnded()
+        {
+            isMazeActive = false;
         }
 
         private void BindRestartButtons()
@@ -255,6 +283,11 @@ namespace MiniIT.ARKANOID
                 pausePanel.SetRestartCallback(null);
                 pausePanel.SetMenuCallback(null);
             }
+        }
+
+        private void HideMazePanel()
+        {
+            mazeRescuePanel?.HideImmediate();
         }
     }
 }

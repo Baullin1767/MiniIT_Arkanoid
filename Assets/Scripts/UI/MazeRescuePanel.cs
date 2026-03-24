@@ -97,24 +97,24 @@ namespace MiniIT.ARKANOID
             Rect screenRect = new Rect(0.0f, 0.0f, Screen.width, Screen.height);
             DrawRect(screenRect, new Color(0.02f, 0.05f, 0.12f, 0.82f));
 
-            float panelWidth = Mathf.Min(Screen.width * 0.78f, 720.0f);
-            float panelHeight = Mathf.Min(Screen.height * 0.84f, 760.0f);
+            float panelWidth = Mathf.Min(Screen.width * 0.90f, 1400.0f);
+            float panelHeight = Mathf.Min(Screen.height * 0.9f, 900.0f);
             Rect panelRect = new Rect(
                 (Screen.width - panelWidth) * 0.5f,
                 (Screen.height - panelHeight) * 0.5f,
                 panelWidth,
                 panelHeight);
 
-            DrawRect(panelRect, new Color(0.08f, 0.14f, 0.2f, 0.96f));
+            DrawRect(panelRect, new Color(0.6666667f, 0.3764706f, 0.1568628f, 1f));
             GUI.Box(panelRect, GUIContent.none);
 
             Rect titleRect = new Rect(panelRect.x + 20.0f, panelRect.y + 18.0f, panelRect.width - 40.0f, 40.0f);
             GUI.Label(titleRect, "Maze Rescue", titleStyle);
 
-            Rect bodyRect = new Rect(panelRect.x + 24.0f, panelRect.y + 62.0f, panelRect.width - 48.0f, 54.0f);
-            GUI.Label(bodyRect, "Reach the exit before time runs out to recover 1 life.", bodyStyle);
+            Rect bodyRect = new Rect(panelRect.x + 10.0f, panelRect.y + 50.0f, panelRect.width - 10.0f, 90.0f);
+            GUI.Label(bodyRect, "Reach the exit before time runs out to recover 1 life. Use the joystick to move.", bodyStyle);
 
-            Rect timerRect = new Rect(panelRect.x + 24.0f, panelRect.y + 116.0f, panelRect.width - 48.0f, 36.0f);
+            Rect timerRect = new Rect(panelRect.x + 24.0f, panelRect.y + 110.0f, panelRect.width - 48.0f, 36.0f);
             GUI.Label(timerRect, $"Time Left: {remainingTime:0.0}s", timerStyle);
 
             DrawMaze(panelRect);
@@ -340,7 +340,7 @@ namespace MiniIT.ARKANOID
 
             Rect boardRect = new Rect(
                 panelRect.x + (panelRect.width - boardWidth) * 0.5f,
-                panelRect.y + panelRect.height - boardHeight - 30.0f,
+                panelRect.y + panelRect.height - boardHeight - 60.0f,
                 boardWidth,
                 boardHeight);
 
@@ -395,7 +395,7 @@ namespace MiniIT.ARKANOID
                 {
                     alignment = TextAnchor.MiddleCenter,
                     wordWrap = true,
-                    fontSize = Mathf.RoundToInt(Mathf.Clamp(Screen.height * 0.024f, 14.0f, 20.0f))
+                    fontSize = Mathf.RoundToInt(Mathf.Clamp(Screen.height * 0.06f, 14.0f, 40.0f))
                 };
                 bodyStyle.normal.textColor = new Color(0.86f, 0.93f, 0.98f, 1.0f);
             }

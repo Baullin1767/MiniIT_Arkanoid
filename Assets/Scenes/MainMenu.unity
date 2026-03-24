@@ -1576,12 +1576,11 @@ PrefabInstance:
       value: '<b>ABOUT</b>
 
 
-        MiniIT Arkanoid is a modern remake of the arcade
-        brick-breaker.
+        Arkanoid is a modern remake of the arcade brick-breaker.
 
 
-        Break every brick, protect your lives, and chase
-        a higher score every run.'
+        Break
+        every brick, protect your lives, and chase a higher score every run.'
       objectReference: {fileID: 0}
     - target: {fileID: 8980736103538239670, guid: f9ca0560b40c2924caa7672d48b254a5, type: 3}
       propertyPath: m_Name

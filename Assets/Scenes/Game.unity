@@ -1394,7 +1394,6 @@ RectTransform:
   - {fileID: 2108240318}
   - {fileID: 1729066552}
   - {fileID: 1744656000}
-  - {fileID: 808555910}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2663,11 +2662,11 @@ Transform:
   m_GameObject: {fileID: 808555909}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -959.99994, y: -441.19888, z: 0}
-  m_LocalScale: {x: 1.7438691, y: 1.7438691, z: 1.7438691}
+  m_LocalPosition: {x: 0.0065917964, y: 10670.52, z: -9719.999}
+  m_LocalScale: {x: 188.33784, y: 188.33784, z: 188.33784}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 293115925}
+  m_Father: {fileID: 1043571036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &808555911
 MonoBehaviour:
@@ -3720,6 +3719,7 @@ RectTransform:
   - {fileID: 908946801}
   - {fileID: 217257717}
   - {fileID: 1583932876}
+  - {fileID: 808555910}
   - {fileID: 2082045591}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6883,7 +6883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handleRange: 1
   deadZone: 0
-  axisOptions: 1
+  axisOptions: 0
   snapX: 0
   snapY: 0
   background: {fileID: 2101000001}

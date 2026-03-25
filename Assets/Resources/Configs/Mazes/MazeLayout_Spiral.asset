@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiniIT.ARKANOID.MazeLayoutAsset
   rows:
   - #########
-  - '#S......#'
-  - '#######.#'
+  - '#S....#.#'
+  - '###.#.#.#'
+  - '#...#...#'
+  - '#.#####.#'
   - '#.....#.#'
   - '#.###.#.#'
-  - '#.#...#.#'
-  - '#.#.###.#'
-  - '#.#....E#'
+  - '#...#..E#'
   - #########

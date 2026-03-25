@@ -2681,6 +2681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniIT.ARKANOID.MazeRescuePanel
   layouts: []
+  panelBackgroundTexture: {fileID: 2800000, guid: 40ab8513c09ca2f488b239cf70ecb311, type: 3}
 --- !u!1 &813884632
 GameObject:
   m_ObjectHideFlags: 0
@@ -6828,7 +6829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 300, y: 274}
+  m_AnchoredPosition: {x: 159, y: 167}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2101000002

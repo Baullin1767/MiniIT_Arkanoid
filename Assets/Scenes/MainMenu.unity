@@ -4316,6 +4316,28 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 213.68863
       objectReference: {fileID: 0}
+    - target: {fileID: 7849450705257382368, guid: f9ca0560b40c2924caa7672d48b254a5, type: 3}
+      propertyPath: m_text
+      value: "Privacy Policy \u2014 Arcanoid Brick\n\nWelcome to Arcanoid Brick!
+        While you focus on breaking bricks and improving your score, we focus on
+        keeping your privacy secure.\n\n1. No Personal Data Collection\nArcanoid
+        Brick does not collect, store, or transmit personal information.\n\nNo personally
+        identifiable information (PII) is collected\nGameplay progress and scores
+        are not tracked outside your device\nNo IP addresses, device IDs, or usage
+        logs are recorded\n\n2. No Ads or External Tracking\nThe game is designed
+        to provide a distraction-free arcade experience.\n\nNo third-party advertisements\nNo
+        analytics tools or tracking services\nNo hidden background data collection\n\n3.
+        Suitable for All Ages\nBecause no data is collected, Arcanoid Brick is safe
+        for players of all ages, including children under 13, and follows COPPA-friendly
+        practices.\n\n4. No Sensitive Permissions Required\nThe game does not request
+        access to private device features.\n\nNo Camera or Microphone access\nNo
+        Contacts or Messages access\nNo Location Services\n\n5. Local Storage Only\nAll
+        progress, settings, and high scores are stored locally on your device.\n\nNo
+        external servers\nNo cloud synchronization\nRemoving the app deletes stored
+        data\n\n6. Policy Updates\nIf this Privacy Policy is updated, our commitment
+        to protecting your privacy will remain unchanged.\n\nLast Updated: March
+        2026"
+      objectReference: {fileID: 0}
     - target: {fileID: 8980736103538239670, guid: f9ca0560b40c2924caa7672d48b254a5, type: 3}
       propertyPath: m_Name
       value: Scroll

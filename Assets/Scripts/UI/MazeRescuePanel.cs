@@ -14,7 +14,7 @@ namespace MiniIT.ARKANOID
         private const float MoveDeadZone = 0.2f;
         private const float MoveRepeatDelay = 0.15f;
         private const string MazeResourcesPath = "Configs/Mazes";
-        private const string PanelBackgroundTextureAssetPath = "Assets/PNG/pause/bg.png";
+        // private const string PanelBackgroundTextureAssetPath = "Assets/PNG/pause/bg.png";
 
         [SerializeField]
         private List<MazeLayoutAsset> layouts = new List<MazeLayoutAsset>();
@@ -82,7 +82,7 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
-            panelBackgroundTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(PanelBackgroundTextureAssetPath);
+            // panelBackgroundTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(PanelBackgroundTextureAssetPath);
             if (panelBackgroundTexture != null)
             {
                 EditorUtility.SetDirty(this);

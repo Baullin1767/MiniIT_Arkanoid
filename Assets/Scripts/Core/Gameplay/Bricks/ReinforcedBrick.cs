@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace MiniIT.ARKANOID
@@ -9,7 +10,7 @@ namespace MiniIT.ARKANOID
         private SpriteRenderer brickRenderer = null;
 
         [SerializeField]
-        private Color damagedColor = Color.red;
+        private Sprite damagedSprite;
 
         [SerializeField]
         private float pulseScale = 1.15f;
@@ -50,7 +51,7 @@ namespace MiniIT.ARKANOID
 
             if (brickRenderer != null)
             {
-                brickRenderer.color = damagedColor;
+                brickRenderer.sprite = damagedSprite;
             }
 
             PlayPulse();

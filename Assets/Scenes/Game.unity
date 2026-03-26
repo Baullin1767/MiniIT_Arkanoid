@@ -1431,7 +1431,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.11, z: 0}
-  m_LocalScale: {x: 3, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 952703044}
@@ -1481,7 +1481,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &337427296
 MonoBehaviour:
@@ -3102,8 +3102,8 @@ Transform:
   m_GameObject: {fileID: 952703043}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.21, y: 1.2, z: 1}
+  m_LocalPosition: {x: 0, y: -0.147, z: 0}
+  m_LocalScale: {x: 0.24, y: 0.28, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 337427294}
@@ -3155,7 +3155,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1560824407875404175, guid: 55cb0c08a44300e4ab6e089677130566, type: 3}
+  m_Sprite: {fileID: -2827759684479308483, guid: fb6a401cdd92d724084097af463b5837, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3771,7 +3771,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58, y: 0.58, z: 0.58}
+  m_LocalScale: {x: 0.38, y: 0.38, z: 0.38}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1316317129}
@@ -3823,7 +3823,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -626296687784120458, guid: c66e3a034c989c84b862fee6947e388b, type: 3}
+  m_Sprite: {fileID: -6904304972079260914, guid: 752f44d588b1fe749ba4a65b58f8c1cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4329,8 +4329,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiniIT.ARKANOID.BallSkinApplier
   targetRenderer: {fileID: 1119557509}
   ballSkins:
-  - {fileID: -626296687784120458, guid: c66e3a034c989c84b862fee6947e388b, type: 3}
-  - {fileID: -6785504108125916324, guid: c66e3a034c989c84b862fee6947e388b, type: 3}
+  - {fileID: -6904304972079260914, guid: 752f44d588b1fe749ba4a65b58f8c1cc, type: 3}
+  - {fileID: 7917104091984950931, guid: 752f44d588b1fe749ba4a65b58f8c1cc, type: 3}
+  - {fileID: -831664223969205946, guid: 752f44d588b1fe749ba4a65b58f8c1cc, type: 3}
 --- !u!1 &1341617299
 GameObject:
   m_ObjectHideFlags: 0

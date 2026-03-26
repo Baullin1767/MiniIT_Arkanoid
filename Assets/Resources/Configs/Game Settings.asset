@@ -18,5 +18,6 @@ MonoBehaviour:
   launchSpeed: 8
   wallBounceMultiplier: 0.2
   ballSprites:
-  - {fileID: -626296687784120458, guid: c66e3a034c989c84b862fee6947e388b, type: 3}
-  - {fileID: -6785504108125916324, guid: c66e3a034c989c84b862fee6947e388b, type: 3}
+  - {fileID: -6904304972079260914, guid: 752f44d588b1fe749ba4a65b58f8c1cc, type: 3}
+  - {fileID: 7917104091984950931, guid: 752f44d588b1fe749ba4a65b58f8c1cc, type: 3}
+  - {fileID: -831664223969205946, guid: 752f44d588b1fe749ba4a65b58f8c1cc, type: 3}

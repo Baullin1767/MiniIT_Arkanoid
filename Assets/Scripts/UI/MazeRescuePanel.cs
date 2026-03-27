@@ -19,10 +19,10 @@ namespace MiniIT.ARKANOID
         private const int MaxBoardRows = 9;
         private const int ExpectedCellCount = MaxBoardColumns * MaxBoardRows;
 
-        private static readonly Color FloorColor = new Color(0.77f, 0.88f, 0.95f, 0.95f);
-        private static readonly Color WallColor = new Color(0.17f, 0.24f, 0.31f, 1.0f);
-        private static readonly Color ExitColor = new Color(0.96f, 0.76f, 0.24f, 1.0f);
-        private static readonly Color PlayerColor = new Color(0.25f, 0.88f, 0.44f, 1.0f);
+        private static readonly Color FloorColor = new Color(1f, 1f, 1f, 1f);
+        private static readonly Color WallColor = new Color(0f, 0f, 0f, 1.0f);
+        private static readonly Color ExitColor = new Color(0f, 0.76f, 0.24f, 1.0f);
+        private static readonly Color PlayerColor = new Color(1f, 0f, 0.5f, 1.0f);
 
         [SerializeField]
         private List<MazeLayoutAsset> layouts = new List<MazeLayoutAsset>();

@@ -1,0 +1,474 @@
+fileFormatVersion: 2
+guid: 016d7f98c8a5ed94f88062d2e5b9730f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3838331459882242491
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_0
+  - first:
+      213: 4384693889018823432
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_1
+  - first:
+      213: -6460108613838053119
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_2
+  - first:
+      213: 8673523460561666191
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_3
+  - first:
+      213: -5510098586106257560
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_4
+  - first:
+      213: -6228673281641068911
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_5
+  - first:
+      213: 8685677439342004093
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_6
+  - first:
+      213: -3290759134769830634
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_7
+  - first:
+      213: 4902752945765884225
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_8
+  - first:
+      213: -1444154747560174807
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_9
+  - first:
+      213: -3643351808926934259
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_10
+  - first:
+      213: 3575203449123283750
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_11
+  - first:
+      213: 7068091823623227927
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_12
+  - first:
+      213: 6260559328636687013
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_13
+  - first:
+      213: -403883361815154196
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_14
+  - first:
+      213: 8644106848075783191
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_15
+  - first:
+      213: -4765777160357853724
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_16
+  - first:
+      213: 8792002342915794647
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_17
+  - first:
+      213: 3455624259567262584
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_18
+  - first:
+      213: -1299542049998743546
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_19
+  - first:
+      213: 2602371113848171893
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_20
+  - first:
+      213: -489665368614203958
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_21
+  - first:
+      213: -8862572253519931404
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_22
+  - first:
+      213: -4929862083924243992
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_23
+  - first:
+      213: -6009100259387739985
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_24
+  - first:
+      213: -4081788503112832220
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_25
+  - first:
+      213: -5928284689920540687
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_26
+  - first:
+      213: -7340424184502279541
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_27
+  - first:
+      213: 601230527719633215
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_28
+  - first:
+      213: 7188881971672643424
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_29
+  - first:
+      213: -5486414607419233608
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_30
+  - first:
+      213: 5043538847199688676
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_31
+  - first:
+      213: -2549070546787408581
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_32
+  - first:
+      213: -8161587632424415323
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_33
+  - first:
+      213: -7666930008065267984
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_34
+  - first:
+      213: 3739360823487050855
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_35
+  - first:
+      213: -6844274212303378878
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_36
+  - first:
+      213: 6204573636012476065
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_37
+  - first:
+      213: -3363785949716982859
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_38
+  - first:
+      213: -6210526107018523043
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_39
+  - first:
+      213: 2602714121021785899
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_40
+  - first:
+      213: 1662568631241163474
+    second: ChatGPT Image Mar 31, 2026, 12_56_31 PM_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlayButton
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 853
+        width: 426
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb1dc7c502e744530800000000000000
+      internalID: 3838331459882242491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShopButton
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 858
+        width: 467
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 101edbd51751956a0800000000000000
+      internalID: -6460108613838053119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SettingsButton
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 394
+        width: 135
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71c1410416906f770800000000000000
+      internalID: 8644106848075783191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonBackGround1
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 395
+        width: 334
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e5433e3cee8cddb0800000000000000
+      internalID: -4765777160357853724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonBackGround2
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 400
+        width: 283
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d6e5e18c87730a70800000000000000
+      internalID: 8792002342915794647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonBackGround3
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 397
+        width: 301
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b9ab494f7d4ff20800000000000000
+      internalID: 3455624259567262584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image Mar 31, 2026, 12_56_31 PM_20
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 544
+        width: 118
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57d68a67dba7d1420800000000000000
+      internalID: 2602371113848171893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image Mar 31, 2026, 12_56_31 PM_37
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 166
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6074549d21b1650800000000000000
+      internalID: 6204573636012476065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a88b0d13e4f6fd24d965aeef56aa938d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ButtonBackGround1: -4765777160357853724
+      ButtonBackGround2: 8792002342915794647
+      ButtonBackGround3: 3455624259567262584
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_1: 4384693889018823432
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_10: -3643351808926934259
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_11: 3575203449123283750
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_12: 7068091823623227927
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_13: 6260559328636687013
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_14: -403883361815154196
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_19: -1299542049998743546
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_20: 2602371113848171893
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_21: -489665368614203958
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_22: -8862572253519931404
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_23: -4929862083924243992
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_24: -6009100259387739985
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_25: -4081788503112832220
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_26: -5928284689920540687
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_27: -7340424184502279541
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_28: 601230527719633215
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_29: 7188881971672643424
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_3: 8673523460561666191
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_30: -5486414607419233608
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_31: 5043538847199688676
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_32: -2549070546787408581
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_33: -8161587632424415323
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_34: -7666930008065267984
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_35: 3739360823487050855
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_36: -6844274212303378878
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_37: 6204573636012476065
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_38: -3363785949716982859
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_39: -6210526107018523043
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_4: -5510098586106257560
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_40: 2602714121021785899
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_41: 1662568631241163474
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_5: -6228673281641068911
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_6: 8685677439342004093
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_7: -3290759134769830634
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_8: 4902752945765884225
+      ChatGPT Image Mar 31, 2026, 12_56_31 PM_9: -1444154747560174807
+      PlayButton: 3838331459882242491
+      SettingsButton: 8644106848075783191
+      ShopButton: -6460108613838053119
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

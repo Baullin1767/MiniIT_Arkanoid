@@ -9,19 +9,13 @@ namespace MiniIT.ARKANOID
     public class MainMenuController : MonoBehaviour
     {
         [SerializeField]
-        private UIButton startButton = null;
+        private UIButton playButton = null;
 
         [SerializeField]
-        private UIButton leaderBoardButton = null;
+        private UIButton settingsButton = null;
 
         [SerializeField]
-        private UIButton aboutButton = null;
-
-        [SerializeField]
-        private UIButton privacyPolicyButton = null;
-
-        [SerializeField]
-        private UIButton skinButton = null;
+        private UIButton shopButton = null;
 
         [SerializeField]
         private WindowsManager windowsManager = null;
@@ -30,20 +24,16 @@ namespace MiniIT.ARKANOID
 
         private void OnEnable()
         {
-            RegisterButton(startButton, OnStartClicked);
-            RegisterButton(leaderBoardButton, OnLeaderBoardClicked);
-            RegisterButton(aboutButton, OnAboutClicked);
-            RegisterButton(privacyPolicyButton, OnPrivacyPolicyClicked);
-            RegisterButton(skinButton, OnSkinClicked);
+            RegisterButton(playButton, OnPlayClicked);
+            RegisterButton(settingsButton, OnSettingsClicked);
+            RegisterButton(shopButton, OnShopClicked);
         }
 
         private void OnDisable()
         {
-            UnregisterButton(startButton, OnStartClicked);
-            UnregisterButton(leaderBoardButton, OnLeaderBoardClicked);
-            UnregisterButton(aboutButton, OnAboutClicked);
-            UnregisterButton(privacyPolicyButton, OnPrivacyPolicyClicked);
-            UnregisterButton(skinButton, OnSkinClicked);
+            UnregisterButton(playButton, OnPlayClicked);
+            UnregisterButton(settingsButton, OnSettingsClicked);
+            UnregisterButton(shopButton, OnShopClicked);
         }
 
         private void RegisterButton(UIButton button, UnityAction handler)
@@ -67,36 +57,20 @@ namespace MiniIT.ARKANOID
             button.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.RemoveListener(handler);
         }
 
-        private void OnStartClicked()
+        private void OnPlayClicked()
         {
             SceneManager.LoadScene(GameSceneName);
         }
 
-        private void OnLeaderBoardClicked()
+        private void OnSettingsClicked()
         {
             if (windowsManager != null)
             {
-                windowsManager.ShowLeaderBoard();
+                windowsManager.ShowSettings();
             }
         }
 
-        private void OnAboutClicked()
-        {
-            if (windowsManager != null)
-            {
-                windowsManager.ShowAbout();
-            }
-        }
-
-        private void OnPrivacyPolicyClicked()
-        {
-            if (windowsManager != null)
-            {
-                windowsManager.ShowPrivacyPolicy();
-            }
-        }
-
-        private void OnSkinClicked()
+        private void OnShopClicked()
         {
             if (windowsManager != null)
             {

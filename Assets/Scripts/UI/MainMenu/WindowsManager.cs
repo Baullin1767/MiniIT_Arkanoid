@@ -17,6 +17,9 @@ namespace MiniIT.ARKANOID
         [SerializeField]
         private SkinWindow skinWindow = null;
 
+        [SerializeField]
+        private SettingsWindow settingsWindow = null;
+
         private IWindow currentWindow = null;
 
         private void Awake()
@@ -40,6 +43,11 @@ namespace MiniIT.ARKANOID
             {
                 skinWindow.SetCloseCallback(HideAll);
             }
+
+            if (settingsWindow != null)
+            {
+                settingsWindow.Configure(ShowLeaderBoard, ShowAbout, ShowPrivacyPolicy, HideAll);
+            }
         }
 
         public void ShowLeaderBoard()
@@ -60,6 +68,11 @@ namespace MiniIT.ARKANOID
         public void ShowSkin()
         {
             ShowWindow(skinWindow);
+        }
+
+        public void ShowSettings()
+        {
+            ShowWindow(settingsWindow);
         }
 
         public void HideAll()

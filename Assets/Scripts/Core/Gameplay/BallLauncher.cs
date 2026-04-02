@@ -5,11 +5,13 @@ namespace MiniIT.ARKANOID
 {
     public class BallLauncher : MonoBehaviour
     {
+        private const float MinimumLaunchUpwardComponent = 0.35f;
+
         [SerializeField]
         private Ball ball = null;
 
         [SerializeField]
-        private Vector2 attachOffset = new Vector2(0.0f, 0.6f);
+        private Vector2 attachOffset = Vector2.zero;
 
         private IInputService inputService = null;
         private SignalBus signalBus = null;
@@ -38,7 +40,7 @@ namespace MiniIT.ARKANOID
         private void Start()
         {
             ballCoordinator?.SetPrimaryBall(ball);
-            AttachBallToPaddle();
+            ResetBallToLaunchPoint();
         }
 
         private void Update()
@@ -47,8 +49,6 @@ namespace MiniIT.ARKANOID
             {
                 return;
             }
-
-            FollowPaddle();
 
             if (isMazeActive)
             {
@@ -61,7 +61,7 @@ namespace MiniIT.ARKANOID
             }
         }
 
-        private void AttachBallToPaddle()
+        private void ResetBallToLaunchPoint()
         {
             if (ball == null)
             {
@@ -70,20 +70,7 @@ namespace MiniIT.ARKANOID
 
             awaitingLaunch = true;
             ball.Stop();
-            FollowPaddle();
-        }
-
-        private void FollowPaddle()
-        {
-            if (ball == null)
-            {
-                return;
-            }
-
-            Vector2 attachPosition = transform.position;
-            attachPosition += attachOffset;
-
-            ball.ResetPosition(attachPosition);
+            ball.ResetPosition(GetLaunchPosition());
         }
 
         private void LaunchBall()
@@ -95,18 +82,18 @@ namespace MiniIT.ARKANOID
 
             awaitingLaunch = false;
 
-            Vector2 launchDirection = new Vector2(0.0f, 1.0f);
+            Vector2 launchDirection = ResolveLaunchDirection();
             ball.Launch(launchDirection);
         }
 
         private void OnBallLost()
         {
-            AttachBallToPaddle();
+            ResetBallToLaunchPoint();
         }
 
         private void OnLevelReset()
         {
-            AttachBallToPaddle();
+            ResetBallToLaunchPoint();
         }
 
         private void SubscribeSignals()
@@ -145,6 +132,31 @@ namespace MiniIT.ARKANOID
         private void OnMazeEnded()
         {
             isMazeActive = false;
+        }
+
+        private Vector2 GetLaunchPosition()
+        {
+            return (Vector2)transform.position + attachOffset;
+        }
+
+        private Vector2 ResolveLaunchDirection()
+        {
+            Vector2 inputDirection = inputService != null
+                ? inputService.GetMoveInput()
+                : Vector2.zero;
+
+            if (inputDirection.sqrMagnitude <= Mathf.Epsilon)
+            {
+                return Vector2.up;
+            }
+
+            Vector2 launchDirection = inputDirection.normalized;
+            if (launchDirection.y < MinimumLaunchUpwardComponent)
+            {
+                launchDirection.y = MinimumLaunchUpwardComponent;
+            }
+
+            return launchDirection.normalized;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MiniIT.ARKANOID
             Container.DeclareSignal<ScoreChangedSignal>();
             Container.DeclareSignal<LivesChangedSignal>();
             Container.DeclareSignal<BrickDestroyedSignal>();
-            Container.DeclareSignal<BallLostSignal>();
+            Container.DeclareSignal<BallResetSignal>();
         }
     }
 }

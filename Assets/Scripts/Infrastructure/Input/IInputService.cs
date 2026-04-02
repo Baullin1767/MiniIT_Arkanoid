@@ -6,6 +6,6 @@ namespace MiniIT.ARKANOID
     {
         Vector2 GetMoveInput();
 
-        bool IsLaunchRequested();
+        bool TryConsumeLaunchDirection(out Vector2 direction);
     }
 }

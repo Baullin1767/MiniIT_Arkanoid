@@ -30,7 +30,7 @@ namespace MiniIT.ARKANOID
 
             if (signalBus != null)
             {
-                signalBus.Fire<BallLostSignal>();
+                signalBus.Fire<BallResetSignal>();
             }
         }
     }

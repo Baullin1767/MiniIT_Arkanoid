@@ -28,7 +28,6 @@ namespace MiniIT.ARKANOID
 
             if (controlType == ControlType.Launch)
             {
-                mobileInputService.RequestLaunch();
                 return;
             }
 

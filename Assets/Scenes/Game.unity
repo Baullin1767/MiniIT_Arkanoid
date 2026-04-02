@@ -2476,7 +2476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1316317130}
-  attachOffset: {x: 0, y: 0.6}
+  centerSpawnPoint: {fileID: 0}
 --- !u!1 &345245579
 GameObject:
   m_ObjectHideFlags: 0
@@ -8645,7 +8645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1007151883
 RectTransform:
   m_ObjectHideFlags: 0

@@ -56,7 +56,7 @@ namespace MiniIT.ARKANOID
         }
     }
 
-    public class BallLostSignal
+    public class BallResetSignal
     {
     }
 }

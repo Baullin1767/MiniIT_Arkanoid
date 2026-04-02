@@ -11,11 +11,13 @@ namespace MiniIT.ARKANOID
 
             if (LevelManager == null || !LevelManager.TryGetTeleportDestination(this, out TeleportBrick destination))
             {
+                shouldApplyDamage = false;
                 return BrickImpactResult.None;
             }
 
             context.SourceBall.TeleportTo(destination);
             shouldApplyDamage = false;
+            DestroyBrick(context);
 
             return BrickImpactResult.CollisionConsumed;
         }

@@ -10,7 +10,6 @@ namespace MiniIT.ARKANOID
     public class GameManager
     {
         private int DefaultLives = 3;
-        private const int MazeLifeReward = 1;
 
         private readonly SignalBus signalBus;
         private readonly LevelManager levelManager;
@@ -61,16 +60,17 @@ namespace MiniIT.ARKANOID
 
         private void HandleBallLost()
         {
-            if (isMazeRescueActive)
+            lives--;
+
+            signalBus.Fire(new LivesChangedSignal(lives));
+
+            if (lives > 0)
             {
                 return;
             }
 
-            lives--;
-            isMazeRescueActive = true;
-
-            signalBus.Fire(new LivesChangedSignal(lives));
-            signalBus.Fire<MazeStartedSignal>();
+            signalBus.Fire<GameOverSignal>();
+            PauseGame();
         }
 
         private void HandleMazeCompleted()
@@ -81,7 +81,7 @@ namespace MiniIT.ARKANOID
             }
 
             isMazeRescueActive = false;
-            lives += MazeLifeReward;
+            lives++;
 
             signalBus.Fire(new LivesChangedSignal(lives));
         }

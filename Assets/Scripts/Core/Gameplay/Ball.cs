@@ -25,12 +25,17 @@ namespace MiniIT.ARKANOID
         private bool launched = false;
 
         private AudioService _audioService;
+        private LevelManager levelManager = null;
+        private BallCoordinator ballCoordinator = null;
+        private TeleportBrick ignoredTeleportBrick = null;
         
         [Inject]
-        public void Construct(GameSettings gameSettings, AudioService audioService)
+        public void Construct(GameSettings gameSettings, AudioService audioService, LevelManager levelManager, BallCoordinator ballCoordinator)
         {
             launchSpeed = gameSettings.launchSpeed;
             _audioService = audioService;
+            this.levelManager = levelManager;
+            this.ballCoordinator = ballCoordinator;
         }
         private void Awake()
         {
@@ -56,7 +61,16 @@ namespace MiniIT.ARKANOID
             MoveBall(currentSpeed * Time.deltaTime);
         }
 
+        public Vector2 CurrentDirection => currentDirection;
+
+        public float CurrentSpeed => currentSpeed;
+
         public void Launch(Vector2 direction)
+        {
+            Launch(direction, launchSpeed);
+        }
+
+        public void Launch(Vector2 direction, float speed)
         {
             if (direction.sqrMagnitude <= Mathf.Epsilon)
             {
@@ -64,8 +78,10 @@ namespace MiniIT.ARKANOID
             }
 
             currentDirection = direction.normalized;
-            currentSpeed = launchSpeed;
+            currentSpeed = speed > 0.0f ? speed : launchSpeed;
             launched = true;
+            ignoredTeleportBrick = null;
+            ballCoordinator?.SetBallInPlay(this, true);
             _audioService.PlaySound(AudioService.SoundType.LaunchSound);
         }
 
@@ -74,12 +90,30 @@ namespace MiniIT.ARKANOID
             currentDirection = Vector2.zero;
             currentSpeed = 0.0f;
             launched = false;
+            ignoredTeleportBrick = null;
+            ballCoordinator?.SetBallInPlay(this, false);
         }
 
         public void ResetPosition(Vector2 position)
         {
             transform.position = position;
             Stop();
+        }
+
+        public void TeleportTo(TeleportBrick destination)
+        {
+            if (destination == null)
+            {
+                return;
+            }
+
+            Vector2 travelDirection = currentDirection.sqrMagnitude <= Mathf.Epsilon
+                ? Vector2.up
+                : currentDirection.normalized;
+
+            transform.position = destination.GetExitPosition(travelDirection, GetCastRadius() + CollisionSkin);
+            ignoredTeleportBrick = destination;
+            Physics2D.SyncTransforms();
         }
 
         private void MoveBall(float distance)
@@ -157,6 +191,12 @@ namespace MiniIT.ARKANOID
                     continue;
                 }
 
+                TeleportBrick teleportBrick = hitCollider.GetComponentInParent<TeleportBrick>();
+                if (ignoredTeleportBrick != null && teleportBrick == ignoredTeleportBrick)
+                {
+                    continue;
+                }
+
                 if (hitCollider.isTrigger && hitCollider.GetComponentInParent<BallOutOfBounds>() == null)
                 {
                     continue;
@@ -207,6 +247,7 @@ namespace MiniIT.ARKANOID
             Paddle paddle = hitCollider.GetComponentInParent<Paddle>();
             if (paddle != null)
             {
+                ignoredTeleportBrick = null;
                 BounceFromPaddle(hitCollider, paddle);
                 return;
             }
@@ -214,9 +255,17 @@ namespace MiniIT.ARKANOID
             BrickBase brick = hitCollider.GetComponentInParent<BrickBase>();
             if (brick != null)
             {
-                brick.HandleBallHit();
+                BrickImpactResult impactResult = levelManager != null
+                    ? levelManager.HandleBrickImpact(brick, BrickImpactContext.DirectHit(this, currentDirection))
+                    : brick.HandleImpact(BrickImpactContext.DirectHit(this, currentDirection));
+
+                if (impactResult.ConsumeCollision)
+                {
+                    return;
+                }
             }
 
+            ignoredTeleportBrick = null;
             Vector2 normal = hit.normal;
             if (normal.sqrMagnitude <= Mathf.Epsilon)
             {

@@ -11431,6 +11431,10 @@ MonoBehaviour:
   bricksRoot: {fileID: 528496597}
   standardBrickPrefab: {fileID: 8425894714915590995, guid: b0345bd55759eea47b54c003f122eb35, type: 3}
   reinforcedBrickPrefab: {fileID: 3134303118641926081, guid: 1e838cdde399be94fa7296cd17689179, type: 3}
+  explosiveBrickPrefab: {fileID: 8425894714915590995, guid: 5fdac5a9279e4bf9af759c3f36d6b001, type: 3}
+  teleportBrickPrefab: {fileID: 8425894714915590995, guid: e18d8e6c580d43ce9bb3de915462b001, type: 3}
+  splitterBrickPrefab: {fileID: 8425894714915590995, guid: 5488ddbf17c24781be7fc9336d7fb001, type: 3}
+  bonusBrickPrefab: {fileID: 8425894714915590995, guid: ac592909bf814ce88cf89f6817bab001, type: 3}
   layouts:
   - {fileID: 11400000, guid: 7c2372817042de94aa8fca077fe58d45, type: 2}
   - {fileID: 11400000, guid: 55fa083d32b244f590385e07c6c3be0d, type: 2}

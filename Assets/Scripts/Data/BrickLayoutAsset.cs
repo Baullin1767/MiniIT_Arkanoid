@@ -7,7 +7,11 @@ namespace MiniIT.ARKANOID
     public enum BrickType
     {
         Standard = 0,
-        Reinforced = 1
+        Reinforced = 1,
+        Explosive = 2,
+        Teleport = 3,
+        Splitter = 4,
+        Bonus = 5
     }
 
     [Serializable]

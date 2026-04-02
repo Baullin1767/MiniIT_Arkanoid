@@ -13,14 +13,16 @@ namespace MiniIT.ARKANOID
 
         private IInputService inputService = null;
         private SignalBus signalBus = null;
+        private BallCoordinator ballCoordinator = null;
         private bool awaitingLaunch = false;
         private bool isMazeActive = false;
 
         [Inject]
-        public void Construct(IInputService inputService, SignalBus signalBus)
+        public void Construct(IInputService inputService, SignalBus signalBus, BallCoordinator ballCoordinator)
         {
             this.inputService = inputService;
             this.signalBus = signalBus;
+            this.ballCoordinator = ballCoordinator;
         }
 
         private void OnEnable()
@@ -35,6 +37,7 @@ namespace MiniIT.ARKANOID
 
         private void Start()
         {
+            ballCoordinator?.SetPrimaryBall(ball);
             AttachBallToPaddle();
         }
 

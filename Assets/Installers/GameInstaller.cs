@@ -14,6 +14,7 @@ namespace MiniIT.ARKANOID
         {
             Container.BindInstance(ResolveGameSettings()).AsSingle();
             Container.Bind<GameManager>().AsSingle();
+            Container.Bind<BallCoordinator>().AsSingle();
             Container.Bind<LevelManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<TweenEffects>().AsSingle();
 

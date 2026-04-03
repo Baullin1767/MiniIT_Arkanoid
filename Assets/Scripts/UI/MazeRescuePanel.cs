@@ -435,7 +435,7 @@ namespace MiniIT.ARKANOID
                 }
 
                 cellViews[index].SetVisible(true);
-                cellViews[index].SetColor(cellColor);
+                cellViews[index].SetColor(cellColor, mazeGrid[layoutRow][layoutColumn] == '#');
             }
         }
 

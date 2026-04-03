@@ -19,7 +19,7 @@ namespace MiniIT.ARKANOID
             image.enabled = visible;
         }
 
-        public void SetColor(Sprite color)
+        public void SetColor(Sprite color, bool isWall)
         {
             if (image == null)
             {
@@ -27,6 +27,7 @@ namespace MiniIT.ARKANOID
             }
 
             image.sprite = color;
+            if(isWall) image.color = Color.clear;
         }
     }
 }

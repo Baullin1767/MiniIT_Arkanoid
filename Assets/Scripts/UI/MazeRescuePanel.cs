@@ -19,10 +19,10 @@ namespace MiniIT.ARKANOID
         private const int MaxBoardRows = 9;
         private const int ExpectedCellCount = MaxBoardColumns * MaxBoardRows;
 
-        private static readonly Color FloorColor = new Color(1f, 1f, 1f, 1f);
-        private static readonly Color WallColor = new Color(0f, 0f, 0f, 1.0f);
-        private static readonly Color ExitColor = new Color(0f, 0.76f, 0.24f, 1.0f);
-        private static readonly Color PlayerColor = new Color(1f, 0f, 0.5f, 1.0f);
+        [SerializeField] Sprite FloorColor ;
+        [SerializeField] Sprite WallColor;
+        [SerializeField] Sprite ExitColor;
+        [SerializeField] Sprite PlayerColor;
 
         [SerializeField]
         private List<MazeLayoutAsset> layouts = new List<MazeLayoutAsset>();
@@ -420,7 +420,7 @@ namespace MiniIT.ARKANOID
                     continue;
                 }
 
-                Color cellColor = mazeGrid[layoutRow][layoutColumn] == '#'
+                Sprite cellColor = mazeGrid[layoutRow][layoutColumn] == '#'
                     ? WallColor
                     : FloorColor;
 

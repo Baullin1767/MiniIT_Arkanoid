@@ -19,14 +19,14 @@ namespace MiniIT.ARKANOID
             image.enabled = visible;
         }
 
-        public void SetColor(Color color)
+        public void SetColor(Sprite color)
         {
             if (image == null)
             {
                 return;
             }
 
-            image.color = color;
+            image.sprite = color;
         }
     }
 }

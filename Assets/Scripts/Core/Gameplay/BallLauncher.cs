@@ -9,7 +9,10 @@ namespace MiniIT.ARKANOID
         private Ball ball = null;
 
         [SerializeField]
-        private Transform centerSpawnPoint = null;
+        private Transform spawnPoint = null;
+
+        [SerializeField]
+        private Vector2 fallbackSpawnPosition = new Vector2(0.0f, -3.5f);
 
         private IInputService inputService = null;
         private SignalBus signalBus = null;
@@ -35,7 +38,7 @@ namespace MiniIT.ARKANOID
 
         private void Start()
         {
-            ResetBallToCenter();
+            ResetBallToSpawn();
         }
 
         private void Update()
@@ -56,7 +59,7 @@ namespace MiniIT.ARKANOID
             }
         }
 
-        private void ResetBallToCenter()
+        private void ResetBallToSpawn()
         {
             if (ball == null)
             {
@@ -64,7 +67,7 @@ namespace MiniIT.ARKANOID
             }
 
             awaitingLaunch = true;
-            ball.ResetPosition(GetCenterSpawnPosition());
+            ball.ResetPosition(GetSpawnPosition());
         }
 
         private void LaunchBall(Vector2 direction)
@@ -80,12 +83,12 @@ namespace MiniIT.ARKANOID
 
         private void OnBallReset()
         {
-            ResetBallToCenter();
+            ResetBallToSpawn();
         }
 
         private void OnLevelReset()
         {
-            ResetBallToCenter();
+            ResetBallToSpawn();
         }
 
         private void SubscribeSignals()
@@ -126,14 +129,14 @@ namespace MiniIT.ARKANOID
             isMazeActive = false;
         }
 
-        private Vector2 GetCenterSpawnPosition()
+        private Vector2 GetSpawnPosition()
         {
-            if (centerSpawnPoint != null)
+            if (spawnPoint != null)
             {
-                return centerSpawnPoint.position;
+                return spawnPoint.position;
             }
 
-            return Vector2.zero;
+            return fallbackSpawnPosition;
         }
     }
 }

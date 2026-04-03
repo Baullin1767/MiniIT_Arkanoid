@@ -11,6 +11,7 @@ namespace MiniIT.ARKANOID
     public class LevelManager : MonoBehaviour
     {
         private DiContainer container = null;
+        private SignalBus signalBus = null;
 
         [SerializeField]
         private Transform bricksRoot = null;
@@ -24,10 +25,18 @@ namespace MiniIT.ARKANOID
         [SerializeField]
         private List<BrickLayoutAsset> layouts = new List<BrickLayoutAsset>();
 
+        [SerializeField]
+        private float brickDropPerMiss = 0.6f;
+
+        [SerializeField]
+        private float brickBottomThresholdY = -5.0f;
+
         private readonly Dictionary<BrickType, Queue<BrickBase>> pool = new Dictionary<BrickType, Queue<BrickBase>>();
         private List<BrickBase> bricks = null;
         private bool poolPrewarmed = false;
         private BrickLayoutAsset currentLayout = null;
+        private Vector3 initialBricksRootLocalPosition = Vector3.zero;
+        private float currentBrickOffsetY = 0.0f;
 
         private List<BrickBase> Bricks
         {
@@ -43,10 +52,21 @@ namespace MiniIT.ARKANOID
         }
 
         [Inject]
-        public void Construct(DiContainer container)
+        public void Construct(DiContainer container, SignalBus signalBus)
         {
             this.container = container;
+            this.signalBus = signalBus;
             // Time.timeScale = 0.1f;
+        }
+
+        private void Awake()
+        {
+            if (bricksRoot == null)
+            {
+                bricksRoot = transform;
+            }
+
+            initialBricksRootLocalPosition = bricksRoot.localPosition;
         }
 
         public void ResetLevel(bool reuseCurrentLayout = false)
@@ -55,6 +75,8 @@ namespace MiniIT.ARKANOID
             {
                 bricksRoot = transform;
             }
+
+            ResetBrickOffset();
             PrewarmPool();
             ReturnActiveBricksToPool();
 
@@ -67,6 +89,22 @@ namespace MiniIT.ARKANOID
 
             currentLayout = layout;
             SpawnLayout(layout);
+        }
+
+        public void HandleBallMiss()
+        {
+            if (Bricks.Count == 0 || bricksRoot == null)
+            {
+                return;
+            }
+
+            currentBrickOffsetY -= brickDropPerMiss;
+            ApplyBrickOffset();
+
+            if (HaveBricksReachedBottom())
+            {
+                signalBus?.Fire<BrickFieldReachedBottomSignal>();
+            }
         }
 
         public void RegisterBrick(BrickBase brick)
@@ -165,6 +203,43 @@ namespace MiniIT.ARKANOID
             brickTransform.localScale = prefab.transform.localScale;
 
             brick.gameObject.SetActive(true);
+        }
+
+        private void ResetBrickOffset()
+        {
+            currentBrickOffsetY = 0.0f;
+            ApplyBrickOffset();
+        }
+
+        private void ApplyBrickOffset()
+        {
+            if (bricksRoot == null)
+            {
+                return;
+            }
+
+            bricksRoot.localPosition = initialBricksRootLocalPosition + Vector3.up * currentBrickOffsetY;
+        }
+
+        private bool HaveBricksReachedBottom()
+        {
+            for (int i = 0; i < Bricks.Count; i++)
+            {
+                BrickBase brick = Bricks[i];
+                if (brick == null || !brick.gameObject.activeInHierarchy)
+                {
+                    continue;
+                }
+
+                Collider2D brickCollider = brick.GetComponent<Collider2D>();
+                float brickBottomY = brickCollider != null ? brickCollider.bounds.min.y : brick.transform.position.y;
+                if (brickBottomY <= brickBottomThresholdY)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void ReturnActiveBricksToPool()

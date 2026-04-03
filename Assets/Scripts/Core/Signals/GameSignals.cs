@@ -59,4 +59,8 @@ namespace MiniIT.ARKANOID
     public class BallResetSignal
     {
     }
+
+    public class BrickFieldReachedBottomSignal
+    {
+    }
 }

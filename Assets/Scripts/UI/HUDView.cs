@@ -55,7 +55,7 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
-            livesText.text = "lives: " + value;
+            livesText.text = "Balls: " + value;
         }
 
         private void RegisterPauseButton()

@@ -16,11 +16,11 @@ MonoBehaviour:
   - YPosition: 3
     StartX: -1.2
     Spacing: 1.1
-    Bricks: 030000000500000003000000
+    Bricks: 040000000500000004000000
   - YPosition: 2.4
     StartX: -2.3
     Spacing: 1.1
-    Bricks: 0300000001000000050000000100000003000000
+    Bricks: 0400000001000000050000000100000004000000
   - YPosition: 1.8
     StartX: -3.4
     Spacing: 1.1
@@ -28,7 +28,7 @@ MonoBehaviour:
   - YPosition: 1.2
     StartX: -4.5
     Spacing: 1.1
-    Bricks: 010000000300000002000000050000000400000005000000020000000300000001000000
+    Bricks: 010000000400000002000000050000000400000005000000020000000400000001000000
   - YPosition: 0.6
     StartX: -3.4
     Spacing: 1.1
@@ -36,8 +36,8 @@ MonoBehaviour:
   - YPosition: 0
     StartX: -2.3
     Spacing: 1.1
-    Bricks: 0300000001000000050000000100000003000000
+    Bricks: 0400000001000000050000000100000004000000
   - YPosition: -0.6
     StartX: -1.2
     Spacing: 1.1
-    Bricks: 030000000500000003000000
+    Bricks: 040000000500000004000000

@@ -1674,11 +1674,20 @@ PrefabInstance:
       value: '<b>ABOUT</b>
 
 
-        Arkanoid is a modern remake of the arcade brick-breaker.
+        BrickBlaster is a fast and colorful arcade brick-breaker
+        inspired by classic retro games.
 
 
-        Break
-        every brick, protect your lives, and chase a higher score every run.'
+        Take control of your paddle and
+        launch the ball to smash through rows of bricks. Each level challenges your
+        timing, accuracy, and reflexes as the speed increases and brick patterns
+        become more complex.
+
+
+        Stay focused, protect your lives, and clear
+        every brick to advance further. With simple controls and engaging gameplay,
+        BrickBlaster is designed to deliver quick, satisfying arcade action and encourage
+        you to beat your best score every time you play.'
       objectReference: {fileID: 0}
     - target: {fileID: 7849450705257382368, guid: f9ca0560b40c2924caa7672d48b254a5, type: 3}
       propertyPath: m_fontColor.b

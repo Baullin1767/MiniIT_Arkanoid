@@ -24,6 +24,7 @@ namespace MiniIT.ARKANOID
             this.levelManager = levelManager;
 
             this.signalBus.Subscribe<BrickDestroyedSignal>(HandleBrickDestroyed);
+            this.signalBus.Subscribe<BallLostSignal>(HandleBallLost);
             this.signalBus.Subscribe<MazeCompletedSignal>(HandleMazeCompleted);
             this.signalBus.Subscribe<MazeFailedSignal>(HandleMazeFailed);
 
@@ -78,6 +79,25 @@ namespace MiniIT.ARKANOID
             }
 
             isMazeRescueActive = false;
+
+            if (lives > 0)
+            {
+                return;
+            }
+
+            signalBus.Fire<GameOverSignal>();
+            PauseGame();
+        }
+
+        private void HandleBallLost()
+        {
+            if (isMazeRescueActive || lives <= 0)
+            {
+                return;
+            }
+
+            lives--;
+            signalBus.Fire(new LivesChangedSignal(lives));
 
             if (lives > 0)
             {

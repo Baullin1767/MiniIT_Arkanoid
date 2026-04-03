@@ -1,0 +1,534 @@
+fileFormatVersion: 2
+guid: 7fa8bccea8dae8a4488780c445ce7e4b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 13806847423003586
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_0
+  - first:
+      213: -7750295210503980043
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_1
+  - first:
+      213: 2544267189495535106
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_2
+  - first:
+      213: -6954174064190486628
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_3
+  - first:
+      213: 5795856461898029630
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_4
+  - first:
+      213: -2657168046658947371
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_5
+  - first:
+      213: -1834723007032418682
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_6
+  - first:
+      213: 4294058505747452242
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_7
+  - first:
+      213: -2233800671642863758
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_8
+  - first:
+      213: 865631795405275352
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_9
+  - first:
+      213: -1738781606251569291
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_10
+  - first:
+      213: -1283228971477873828
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_11
+  - first:
+      213: -8519326004473245458
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_12
+  - first:
+      213: -5570381234120527874
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_13
+  - first:
+      213: 3461633513760766690
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_14
+  - first:
+      213: -2260158717633907986
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_15
+  - first:
+      213: 7366205757370640982
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_16
+  - first:
+      213: -7579864062558393316
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_17
+  - first:
+      213: -2742395469562330974
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_18
+  - first:
+      213: 579916400326791773
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_19
+  - first:
+      213: 7666037298181811282
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_20
+  - first:
+      213: 6115541350591023399
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_21
+  - first:
+      213: 7848890807955049045
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_22
+  - first:
+      213: 5327278484821777423
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_23
+  - first:
+      213: 8140974490679184049
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_24
+  - first:
+      213: 6665775283386614391
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_25
+  - first:
+      213: -3592645683146558738
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_26
+  - first:
+      213: -4699521214520087751
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_27
+  - first:
+      213: -8755059659355426769
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_28
+  - first:
+      213: 4779030479635485575
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_29
+  - first:
+      213: 6406067519855279342
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_30
+  - first:
+      213: 7803448214071287789
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_31
+  - first:
+      213: 8791615980413936735
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_32
+  - first:
+      213: 7219474812755816911
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_33
+  - first:
+      213: 1604650099742533328
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_34
+  - first:
+      213: 7305789429705055361
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_35
+  - first:
+      213: -3735184803589544295
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_36
+  - first:
+      213: 2231447092982643833
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_37
+  - first:
+      213: -7301719840761411372
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_38
+  - first:
+      213: -5639983801144471531
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_39
+  - first:
+      213: 5073463370856598460
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_40
+  - first:
+      213: 6241782811161511147
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_41
+  - first:
+      213: 8701041556770719668
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_42
+  - first:
+      213: 998165186120907302
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_43
+  - first:
+      213: 2574108140565154276
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_44
+  - first:
+      213: 7051587675963475342
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_45
+  - first:
+      213: -2580746808586262748
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_46
+  - first:
+      213: 8710798437108335262
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_47
+  - first:
+      213: 8275359729292347213
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_48
+  - first:
+      213: -1630506107579528711
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_49
+  - first:
+      213: -480790048349314483
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_50
+  - first:
+      213: -1527738635402405161
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_51
+  - first:
+      213: 7483216110490375937
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_52
+  - first:
+      213: -485064613087171719
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_53
+  - first:
+      213: 4666053379182273739
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_54
+  - first:
+      213: 1829138551577751217
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_55
+  - first:
+      213: 7421636724832337822
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_56
+  - first:
+      213: -7358661384651521197
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_57
+  - first:
+      213: -2071041540177174108
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_58
+  - first:
+      213: -7013696844916457837
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_59
+  - first:
+      213: -6139320213020722356
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_60
+  - first:
+      213: -3412179861247743183
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_61
+  - first:
+      213: -6487575094369585896
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_62
+  - first:
+      213: 8725974067139729274
+    second: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 243
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cbbd1c214d013000800000000000000
+      internalID: 13806847423003586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 223
+        width: 77
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5712da205a15a840a9133bfbcfbc787
+      internalID: -7750295210503980043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 195
+        width: 163
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 496f2d2cc9d5a5a40b85900d082c346f
+      internalID: 2544267189495535106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 195
+        width: 151
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d56c0972faa53469dee98844ba62cd
+      internalID: -6954174064190486628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 42
+        width: 152
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ebc469cfc8d04348a7bc7a10013d826
+      internalID: 5795856461898029630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 41
+        width: 139
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 649931c6b52f86c42b9a556bfc5b1201
+      internalID: -2657168046658947371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 51
+        width: 103
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc7e6a530f4251428666f4e85625b7f
+      internalID: -1834723007032418682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 50
+        width: 94
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1dc8bba88a6b1647b3b5f4704103654
+      internalID: 4294058505747452242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c2cb2404a4a68214399aee0c888ac4dd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":680.0,"y":367.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_0: 13806847423003586
+      cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_1: -7750295210503980043
+      cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_2: 2544267189495535106
+      cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_3: -6954174064190486628
+      cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_4: 5795856461898029630
+      cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_5: -2657168046658947371
+      cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_6: -1834723007032418682
+      cartoon-radial-bomb-explosion-animation-dynamic-fiery-blast-with-expanding-smoke-poof-clouds-glowing-sparks-explosive-impact-effect-animated-frames-sequence-vector-set_229548-5397-removebg-preview_7: 4294058505747452242
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,3 +1,4 @@
+using System.Collections;
 using Data;
 using UnityEngine;
 using Zenject;
@@ -9,10 +10,12 @@ namespace MiniIT.ARKANOID
     {
         private const float CollisionSkin = 0.01f;
         private const int MaxCollisionIterations = 4;
+        private const float TeleportDelaySeconds = 1.0f;
 
         private float launchSpeed;
 
         private CircleCollider2D ballCollider = null;
+        private Renderer[] ballRenderers = null;
 
         private readonly RaycastHit2D[] castHits = new RaycastHit2D[8];
 
@@ -28,6 +31,8 @@ namespace MiniIT.ARKANOID
         private LevelManager levelManager = null;
         private BallCoordinator ballCoordinator = null;
         private TeleportBrick ignoredTeleportBrick = null;
+        private Coroutine teleportRoutine = null;
+        private bool isTeleporting = false;
         
         [Inject]
         public void Construct(GameSettings gameSettings, AudioService audioService, LevelManager levelManager, BallCoordinator ballCoordinator)
@@ -44,6 +49,7 @@ namespace MiniIT.ARKANOID
                 ballCollider = GetComponent<CircleCollider2D>();
             }
 
+            ballRenderers = GetComponentsInChildren<Renderer>(true);
             castFilter.useTriggers = true;
             castFilter.useLayerMask = false;
             castFilter.useDepth = false;
@@ -52,7 +58,7 @@ namespace MiniIT.ARKANOID
 
         private void Update()
         {
-            if (!launched || currentSpeed <= 0.0f || ballCollider == null)
+            if (!launched || currentSpeed <= 0.0f || ballCollider == null || isTeleporting)
             {
                 return;
             }
@@ -77,6 +83,7 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
+            CancelPendingTeleport();
             currentDirection = direction.normalized;
             currentSpeed = speed > 0.0f ? speed : launchSpeed;
             launched = true;
@@ -87,6 +94,7 @@ namespace MiniIT.ARKANOID
 
         public void Stop()
         {
+            CancelPendingTeleport();
             currentDirection = Vector2.zero;
             currentSpeed = 0.0f;
             launched = false;
@@ -110,10 +118,36 @@ namespace MiniIT.ARKANOID
             Vector2 travelDirection = currentDirection.sqrMagnitude <= Mathf.Epsilon
                 ? Vector2.up
                 : currentDirection.normalized;
+            Vector2 exitPosition = destination.GetExitPosition(travelDirection, GetCastRadius() + CollisionSkin);
 
-            transform.position = destination.GetExitPosition(travelDirection, GetCastRadius() + CollisionSkin);
+            CancelPendingTeleport();
+            teleportRoutine = StartCoroutine(TeleportAfterDelay(destination, exitPosition));
+        }
+
+        private IEnumerator TeleportAfterDelay(TeleportBrick destination, Vector2 exitPosition)
+        {
+            isTeleporting = true;
+            SetBallVisible(false);
+
+            if (ballCollider != null)
+            {
+                ballCollider.enabled = false;
+            }
+
+            yield return new WaitForSeconds(TeleportDelaySeconds);
+
+            transform.position = exitPosition;
             ignoredTeleportBrick = destination;
+
+            if (ballCollider != null)
+            {
+                ballCollider.enabled = true;
+            }
+
+            SetBallVisible(true);
             Physics2D.SyncTransforms();
+            isTeleporting = false;
+            teleportRoutine = null;
         }
 
         private void MoveBall(float distance)
@@ -293,6 +327,43 @@ namespace MiniIT.ARKANOID
             currentDirection = new Vector2(offset, 1.0f).normalized;
             currentSpeed = launchSpeed;
             _audioService.PlaySound(AudioService.SoundType.LaunchSound);
+        }
+
+        private void CancelPendingTeleport()
+        {
+            if (teleportRoutine != null)
+            {
+                StopCoroutine(teleportRoutine);
+                teleportRoutine = null;
+            }
+
+            isTeleporting = false;
+
+            if (ballCollider != null)
+            {
+                ballCollider.enabled = true;
+            }
+
+            SetBallVisible(true);
+        }
+
+        private void SetBallVisible(bool isVisible)
+        {
+            if (ballRenderers == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < ballRenderers.Length; i++)
+            {
+                Renderer ballRenderer = ballRenderers[i];
+                if (ballRenderer == null)
+                {
+                    continue;
+                }
+
+                ballRenderer.enabled = isVisible;
+            }
         }
     }
 }

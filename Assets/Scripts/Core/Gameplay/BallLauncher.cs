@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -106,6 +108,12 @@ namespace MiniIT.ARKANOID
             ball.ResetPosition(GetLaunchPosition());
             UpdateAimLine();
         }
+        private IEnumerator DestObj()
+        {
+            yield return new WaitForSeconds(2);
+            ball.ResetPosition(GetLaunchPosition());
+        }
+
 
         private void LaunchBall()
         {

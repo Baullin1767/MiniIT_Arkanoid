@@ -56,6 +56,7 @@ namespace MiniIT.ARKANOID
             Stop();
         }
 
+       
         private void Update()
         {
             if (!launched || currentSpeed <= 0.0f || ballCollider == null || isTeleporting)

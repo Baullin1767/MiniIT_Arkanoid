@@ -60,6 +60,10 @@ namespace MiniIT.ARKANOID
     {
     }
 
+    public class BallReachedTopSignal
+    {
+    }
+
     public class BrickFieldReachedBottomSignal
     {
     }

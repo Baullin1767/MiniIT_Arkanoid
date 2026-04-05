@@ -5,6 +5,15 @@ namespace MiniIT.ARKANOID
 {
     public class BallOutOfBounds : MonoBehaviour
     {
+        private enum BorderAction
+        {
+            ResetBall = 0,
+            SpawnAdditionalBall = 1
+        }
+
+        [SerializeField]
+        private BorderAction action = BorderAction.ResetBall;
+
         private SignalBus signalBus = null;
 
         [Inject]
@@ -19,10 +28,26 @@ namespace MiniIT.ARKANOID
             HandleBallEntered(ball);
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Ball ball = collision.collider.GetComponentInParent<Ball>();
+            HandleBallEntered(ball);
+        }
+
         public void HandleBallEntered(Ball ball)
         {
             if (ball == null)
             {
+                return;
+            }
+
+            if (action == BorderAction.SpawnAdditionalBall)
+            {
+                if (ball.TryMarkReachedTop())
+                {
+                    signalBus?.Fire<BallReachedTopSignal>();
+                }
+
                 return;
             }
 

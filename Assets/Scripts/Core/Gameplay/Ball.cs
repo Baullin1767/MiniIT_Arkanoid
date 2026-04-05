@@ -14,6 +14,7 @@ namespace MiniIT.ARKANOID
         private Rigidbody2D body = null;
 
         private bool launched = false;
+        private bool reachedTop = false;
 
         private AudioService _audioService;
 
@@ -42,6 +43,7 @@ namespace MiniIT.ARKANOID
             }
 
             launched = true;
+            reachedTop = false;
             body.simulated = true;
             body.velocity = direction.normalized * launchSpeed;
             body.angularVelocity = 0.0f;
@@ -66,6 +68,7 @@ namespace MiniIT.ARKANOID
         public void ResetPosition(Vector2 position)
         {
             Stop();
+            reachedTop = false;
 
             if (body != null)
             {
@@ -83,6 +86,17 @@ namespace MiniIT.ARKANOID
             }
 
             _audioService.PlaySound(AudioService.SoundType.HitSound);
+        }
+
+        public bool TryMarkReachedTop()
+        {
+            if (reachedTop)
+            {
+                return false;
+            }
+
+            reachedTop = true;
+            return true;
         }
     }
 }

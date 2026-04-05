@@ -6,13 +6,11 @@ namespace MiniIT.ARKANOID
     public class BallOutOfBounds : MonoBehaviour
     {
         private SignalBus signalBus = null;
-        private LevelManager levelManager = null;
 
         [Inject]
-        public void Construct(SignalBus signalBus, LevelManager levelManager)
+        public void Construct(SignalBus signalBus)
         {
             this.signalBus = signalBus;
-            this.levelManager = levelManager;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -29,13 +27,7 @@ namespace MiniIT.ARKANOID
             }
 
             ball.Stop();
-
-            if (signalBus != null)
-            {
-                signalBus.Fire<BallResetSignal>();
-            }
-
-            levelManager?.HandleBallMiss();
+            signalBus?.Fire<BallResetSignal>();
         }
     }
 }

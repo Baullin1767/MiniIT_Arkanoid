@@ -77,34 +77,12 @@ namespace MiniIT.ARKANOID
             }
 
             ResetBrickOffset();
-            PrewarmPool();
             ReturnActiveBricksToPool();
-
-            BrickLayoutAsset layout = reuseCurrentLayout ? currentLayout : PickLayout();
-            if (layout == null)
-            {
-                currentLayout = null;
-                return;
-            }
-
-            currentLayout = layout;
-            SpawnLayout(layout);
+            currentLayout = null;
         }
 
         public void HandleBallMiss()
         {
-            if (Bricks.Count == 0 || bricksRoot == null)
-            {
-                return;
-            }
-
-            currentBrickOffsetY -= brickDropPerMiss;
-            ApplyBrickOffset();
-
-            if (HaveBricksReachedBottom())
-            {
-                signalBus?.Fire<BrickFieldReachedBottomSignal>();
-            }
         }
 
         public void RegisterBrick(BrickBase brick)

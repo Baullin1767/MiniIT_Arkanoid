@@ -6,7 +6,7 @@ namespace MiniIT.ARKANOID
     public class BallLauncher : MonoBehaviour
     {
         [SerializeField]
-        private Ball ball = null;
+        private Ball ballPrefab = null;
 
         [SerializeField]
         private Transform spawnPoint = null;
@@ -14,14 +14,17 @@ namespace MiniIT.ARKANOID
         [SerializeField]
         private Vector2 fallbackSpawnPosition = new Vector2(0.0f, -3.5f);
 
+        private DiContainer container = null;
         private IInputService inputService = null;
         private SignalBus signalBus = null;
+        private Ball currentBall = null;
         private bool awaitingLaunch = false;
         private bool isMazeActive = false;
 
         [Inject]
-        public void Construct(IInputService inputService, SignalBus signalBus)
+        public void Construct(DiContainer container, IInputService inputService, SignalBus signalBus)
         {
+            this.container = container;
             this.inputService = inputService;
             this.signalBus = signalBus;
         }
@@ -43,12 +46,7 @@ namespace MiniIT.ARKANOID
 
         private void Update()
         {
-            if (!awaitingLaunch)
-            {
-                return;
-            }
-
-            if (isMazeActive)
+            if (!awaitingLaunch || isMazeActive || currentBall == null)
             {
                 return;
             }
@@ -61,24 +59,29 @@ namespace MiniIT.ARKANOID
 
         private void ResetBallToSpawn()
         {
-            if (ball == null)
+            Vector2 spawnPosition = GetSpawnPosition();
+
+            awaitingLaunch = true;
+            DestroyCurrentBall();
+
+            if (ballPrefab == null)
             {
                 return;
             }
 
-            awaitingLaunch = true;
-            ball.ResetPosition(GetSpawnPosition());
+            currentBall = SpawnBall(spawnPosition);
+            currentBall?.ResetPosition(spawnPosition);
         }
 
         private void LaunchBall(Vector2 direction)
         {
-            if (ball == null)
+            if (currentBall == null)
             {
                 return;
             }
 
             awaitingLaunch = false;
-            ball.Launch(direction);
+            currentBall.Launch(direction);
         }
 
         private void OnBallReset()
@@ -137,6 +140,32 @@ namespace MiniIT.ARKANOID
             }
 
             return fallbackSpawnPosition;
+        }
+
+        private Ball SpawnBall(Vector2 position)
+        {
+            GameObject ballObject = container != null
+                ? container.InstantiatePrefab(ballPrefab.gameObject)
+                : Instantiate(ballPrefab.gameObject);
+
+            if (ballObject == null)
+            {
+                return null;
+            }
+
+            ballObject.transform.SetPositionAndRotation(position, Quaternion.identity);
+            return ballObject.GetComponent<Ball>();
+        }
+
+        private void DestroyCurrentBall()
+        {
+            if (currentBall == null)
+            {
+                return;
+            }
+
+            Destroy(currentBall.gameObject);
+            currentBall = null;
         }
     }
 }

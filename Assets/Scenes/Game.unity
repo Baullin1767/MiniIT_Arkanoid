@@ -2557,9 +2557,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2a5953eea8b58c47a117624182a4055, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ball: {fileID: 1316317130}
+  m_Name:
+  m_EditorClassIdentifier:
+  ballPrefab: {fileID: 4070000000000000001, guid: e5e50ee1aa1a4fd9b50bb2d5e9230b21, type: 3}
   spawnPoint: {fileID: 2030403002}
   fallbackSpawnPosition: {x: 0, y: -3.5}
 --- !u!1 &345245579
@@ -6788,6 +6788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 763772765}
   - component: {fileID: 763772766}
+  - component: {fileID: 763772767}
   m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
@@ -6840,7 +6841,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -6856,6 +6857,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &763772767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763772764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fe6888432a9a34ab91fc45f465bf13, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
 --- !u!1 &776269242
 GameObject:
   m_ObjectHideFlags: 0
@@ -10893,13 +10906,14 @@ GameObject:
   - component: {fileID: 1316317130}
   - component: {fileID: 1316317132}
   - component: {fileID: 1316317133}
+  - component: {fileID: 1316317134}
   m_Layer: 0
-  m_Name: Ball
+  m_Name: BallTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1316317128
 SpriteRenderer:
   serializedVersion: 2
@@ -10987,6 +11001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61ac2e4aa52ba84084b96fcd82d68cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 1316317134}
 --- !u!58 &1316317132
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11055,6 +11070,33 @@ MonoBehaviour:
   - {fileID: -289880946425663248, guid: 0ff723e970f5cd7428fd7f3df0351964, type: 3}
   - {fileID: -1876550404575720577, guid: 0ff723e970f5cd7428fd7f3df0351964, type: 3}
   - {fileID: -8010952858503041342, guid: 0ff723e970f5cd7428fd7f3df0351964, type: 3}
+--- !u!50 &1316317134
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316317127}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: -1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1328511354
 GameObject:
   m_ObjectHideFlags: 0
@@ -11707,12 +11749,7 @@ MonoBehaviour:
   bricksRoot: {fileID: 528496597}
   standardBrickPrefab: {fileID: 8425894714915590995, guid: b0345bd55759eea47b54c003f122eb35, type: 3}
   reinforcedBrickPrefab: {fileID: 3134303118641926081, guid: 1e838cdde399be94fa7296cd17689179, type: 3}
-  layouts:
-  - {fileID: 11400000, guid: 7c2372817042de94aa8fca077fe58d45, type: 2}
-  - {fileID: 11400000, guid: 55fa083d32b244f590385e07c6c3be0d, type: 2}
-  - {fileID: 11400000, guid: 6ab62a4d4db14aa9a190b6d555047d7b, type: 2}
-  - {fileID: 11400000, guid: 4168e078880640448865d296d8fdcbc4, type: 2}
-  - {fileID: 11400000, guid: 8ee62dc537114c0dbe9ab5f80d5fd3f2, type: 2}
+  layouts: []
   brickDropPerMiss: 0.6
   brickBottomThresholdY: -6
 --- !u!1 &1495155367

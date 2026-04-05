@@ -25,14 +25,18 @@ namespace MiniIT.ARKANOID
             view.Hide();
         }
 
-        public void Show(int score)
+        public void Show()
         {
-            if (scoreText != null)
-            {
-                scoreText.text = score.ToString();
-            }
             
             view.Show();
+        }
+        public void SetScore(int value)
+        {
+            if (scoreText == null)
+            {
+                return;
+            }
+            scoreText.text = "score: " + value;
         }
 
         public void Hide()

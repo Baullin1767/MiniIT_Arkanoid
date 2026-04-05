@@ -2,6 +2,12 @@ namespace MiniIT.ARKANOID
 {
     public class GameOverSignal
     {
+        public int Score { get; private set; }
+
+        public GameOverSignal(int score)
+        {
+            Score = score;
+        }
     }
 
     public class LevelCompletedSignal

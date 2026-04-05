@@ -163,6 +163,7 @@ namespace MiniIT.ARKANOID
             if (hudView != null)
             {
                 hudView.SetScore(signal.Score);
+                gameOverPanel.SetScore(signal.Score);
             }
         }
 
@@ -170,7 +171,7 @@ namespace MiniIT.ARKANOID
         {
             if (gameOverPanel != null)
             {
-                // gameOverPanel.Show();
+                gameOverPanel.Show();
             }
         }
 

@@ -9,7 +9,7 @@ namespace MiniIT.ARKANOID
         private GameObject controlsRoot = null;
 
         [InjectOptional]
-        private IInputService inputService = null;
+        private MobileInputService mobileInputService = null;
 
         private void Awake()
         {
@@ -34,8 +34,7 @@ namespace MiniIT.ARKANOID
             }
 
             bool isSupportedPlatform = Application.isEditor || Application.isMobilePlatform;
-            bool isMobileInput = inputService is MobileInputService;
-            controlsRoot.SetActive(isSupportedPlatform && isMobileInput);
+            controlsRoot.SetActive(isSupportedPlatform && mobileInputService != null);
         }
     }
 }

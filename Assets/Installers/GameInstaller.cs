@@ -40,9 +40,23 @@ namespace MiniIT.ARKANOID
 
         private void BindInput()
         {
-            Container.Bind<DesktopInputService>().AsSingle();
-            Container.Bind<MobileInputService>().AsSingle();
-            Container.Bind<IInputService>().To<CompositeInputService>().AsSingle();
+            if (UseMobileInput())
+            {
+                Container.BindInterfacesAndSelfTo<MobileInputService>().AsSingle();
+            }
+            else
+            {
+                Container.Bind<IInputService>().To<DesktopInputService>().AsSingle();
+            }
+        }
+
+        private bool UseMobileInput()
+        {
+#if UNITY_EDITOR
+            return false;
+#else
+            return Application.isMobilePlatform;
+#endif
         }
     }
 }

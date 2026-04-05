@@ -170,7 +170,7 @@ namespace MiniIT.ARKANOID
         {
             if (gameOverPanel != null)
             {
-                gameOverPanel.Show();
+                // gameOverPanel.Show();
             }
         }
 

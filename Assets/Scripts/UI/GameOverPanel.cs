@@ -2,6 +2,7 @@ using System;
 using Doozy.Runtime.UIManager;
 using Doozy.Runtime.UIManager.Components;
 using Doozy.Runtime.UIManager.Containers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,8 @@ namespace MiniIT.ARKANOID
 {
     public class GameOverPanel : MonoBehaviour
     {
+        [SerializeField]
+        private TMP_Text scoreText = null;
         [SerializeField]
         private UIButton restartButton = null;
 
@@ -22,8 +25,13 @@ namespace MiniIT.ARKANOID
             view.Hide();
         }
 
-        public void Show()
+        public void Show(int score)
         {
+            if (scoreText != null)
+            {
+                scoreText.text = score.ToString();
+            }
+            
             view.Show();
         }
 

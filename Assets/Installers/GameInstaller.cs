@@ -13,7 +13,7 @@ namespace MiniIT.ARKANOID
         public override void InstallBindings()
         {
             Container.BindInstance(ResolveGameSettings()).AsSingle();
-            Container.Bind<GameManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameManager>().AsSingle();
             Container.Bind<LevelManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<TweenEffects>().AsSingle();
 

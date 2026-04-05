@@ -120,6 +120,9 @@ namespace MiniIT.ARKANOID
             }
 
             signalBus.Subscribe<LevelResetSignal>(OnLevelReset);
+            signalBus.Subscribe<LivesChangedSignal>(OnLivesChanged);
+            signalBus.Subscribe<ScoreChangedSignal>(OnScoreChanged);
+            signalBus.Subscribe<GameOverSignal>(OnGameOver);
             signalBus.Subscribe<MazeStartedSignal>(OnMazeStarted);
             signalBus.Subscribe<MazeCompletedSignal>(OnMazeEnded);
             signalBus.Subscribe<MazeFailedSignal>(OnMazeEnded);
@@ -133,6 +136,9 @@ namespace MiniIT.ARKANOID
             }
 
             signalBus.Unsubscribe<LevelResetSignal>(OnLevelReset);
+            signalBus.Unsubscribe<LivesChangedSignal>(OnLivesChanged);
+            signalBus.Unsubscribe<ScoreChangedSignal>(OnScoreChanged);
+            signalBus.Unsubscribe<GameOverSignal>(OnGameOver);
             signalBus.Unsubscribe<MazeStartedSignal>(OnMazeStarted);
             signalBus.Unsubscribe<MazeCompletedSignal>(OnMazeEnded);
             signalBus.Unsubscribe<MazeFailedSignal>(OnMazeEnded);
@@ -142,6 +148,30 @@ namespace MiniIT.ARKANOID
         {
             isMazeActive = false;
             HideAllPanels();
+        }
+
+        private void OnLivesChanged(LivesChangedSignal signal)
+        {
+            if (hudView != null)
+            {
+                hudView.SetLives(signal.Lives);
+            }
+        }
+
+        private void OnScoreChanged(ScoreChangedSignal signal)
+        {
+            if (hudView != null)
+            {
+                hudView.SetScore(signal.Score);
+            }
+        }
+
+        private void OnGameOver()
+        {
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.Show();
+            }
         }
 
         private void OnMazeStarted()

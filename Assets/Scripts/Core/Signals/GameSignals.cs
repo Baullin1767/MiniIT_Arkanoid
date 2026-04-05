@@ -60,6 +60,20 @@ namespace MiniIT.ARKANOID
     {
     }
 
+    public class BallLostSignal
+    {
+    }
+
+    public class BallMergedSignal
+    {
+        public int Tier { get; private set; }
+
+        public BallMergedSignal(int tier)
+        {
+            Tier = tier;
+        }
+    }
+
     public class BallReachedTopSignal
     {
     }

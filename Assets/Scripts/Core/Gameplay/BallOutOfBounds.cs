@@ -52,6 +52,7 @@ namespace MiniIT.ARKANOID
             }
 
             ball.Stop();
+            signalBus?.Fire<BallLostSignal>();
             signalBus?.Fire<BallResetSignal>();
         }
     }

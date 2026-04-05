@@ -148,6 +148,7 @@ namespace MiniIT.ARKANOID
             RemoveBall(source);
             RemoveBall(target);
             SpawnMergedBall(nextTier, mergedPosition);
+            signalBus?.Fire(new BallMergedSignal(nextTier));
         }
 
         private void OnLevelReset()
@@ -294,13 +295,34 @@ namespace MiniIT.ARKANOID
                 return null;
             }
 
-            int startIndex = Random.Range(0, ballPrefabs.Length-1);
-            for (int offset = 0; offset < ballPrefabs.Length; offset++)
+            int spawnableCount = Mathf.Min(ballPrefabs.Length, 3);
+            int totalWeight = 0;
+            for (int i = 0; i < spawnableCount; i++)
             {
-                Ball prefab = ballPrefabs[(startIndex + offset) % ballPrefabs.Length];
-                if (prefab != null)
+                if (ballPrefabs[i] != null)
                 {
-                    return prefab;
+                    totalWeight += spawnableCount - i;
+                }
+            }
+
+            if (totalWeight == 0)
+            {
+                return null;
+            }
+
+            int roll = Random.Range(0, totalWeight);
+            int cumulative = 0;
+            for (int i = 0; i < spawnableCount; i++)
+            {
+                if (ballPrefabs[i] == null)
+                {
+                    continue;
+                }
+
+                cumulative += spawnableCount - i;
+                if (roll < cumulative)
+                {
+                    return ballPrefabs[i];
                 }
             }
 

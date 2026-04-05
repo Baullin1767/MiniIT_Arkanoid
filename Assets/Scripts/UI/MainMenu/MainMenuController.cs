@@ -22,18 +22,24 @@ namespace MiniIT.ARKANOID
 
         private const string GameSceneName = "Game";
 
+        private void Awake()
+        {
+            if (shopButton != null)
+            {
+                shopButton.gameObject.SetActive(false);
+            }
+        }
+
         private void OnEnable()
         {
             RegisterButton(playButton, OnPlayClicked);
             RegisterButton(settingsButton, OnSettingsClicked);
-            RegisterButton(shopButton, OnShopClicked);
         }
 
         private void OnDisable()
         {
             UnregisterButton(playButton, OnPlayClicked);
             UnregisterButton(settingsButton, OnSettingsClicked);
-            UnregisterButton(shopButton, OnShopClicked);
         }
 
         private void RegisterButton(UIButton button, UnityAction handler)
@@ -67,14 +73,6 @@ namespace MiniIT.ARKANOID
             if (windowsManager != null)
             {
                 windowsManager.ShowSettings();
-            }
-        }
-
-        private void OnShopClicked()
-        {
-            if (windowsManager != null)
-            {
-                windowsManager.ShowSkin();
             }
         }
     }

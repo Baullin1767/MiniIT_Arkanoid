@@ -7,7 +7,7 @@ namespace MiniIT.ARKANOID
     public class BallLauncher : MonoBehaviour
     {
         [SerializeField]
-        private Ball ballPrefab = null;
+        private Ball[] ballPrefabs = System.Array.Empty<Ball>();
 
         [SerializeField]
         private Transform spawnPoint = null;
@@ -153,9 +153,15 @@ namespace MiniIT.ARKANOID
 
         private Ball SpawnBall(Vector2 position)
         {
+            Ball prefab = GetRandomBallPrefab();
+            if (prefab == null)
+            {
+                return null;
+            }
+
             GameObject ballObject = container != null
-                ? container.InstantiatePrefab(ballPrefab.gameObject)
-                : Instantiate(ballPrefab.gameObject);
+                ? container.InstantiatePrefab(prefab.gameObject)
+                : Instantiate(prefab.gameObject);
 
             if (ballObject == null)
             {
@@ -171,6 +177,26 @@ namespace MiniIT.ARKANOID
             }
 
             return ball;
+        }
+
+        private Ball GetRandomBallPrefab()
+        {
+            if (ballPrefabs == null || ballPrefabs.Length == 0)
+            {
+                return null;
+            }
+
+            int startIndex = Random.Range(0, ballPrefabs.Length);
+            for (int offset = 0; offset < ballPrefabs.Length; offset++)
+            {
+                Ball prefab = ballPrefabs[(startIndex + offset) % ballPrefabs.Length];
+                if (prefab != null)
+                {
+                    return prefab;
+                }
+            }
+
+            return null;
         }
 
         private void DestroyAllBalls()

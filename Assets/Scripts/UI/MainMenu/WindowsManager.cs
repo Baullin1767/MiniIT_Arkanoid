@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace MiniIT.ARKANOID
@@ -13,9 +12,6 @@ namespace MiniIT.ARKANOID
 
         [SerializeField]
         private PrivacyPolicyWindow privacyPolicyWindow = null;
-
-        [SerializeField]
-        private SkinWindow skinWindow = null;
 
         [SerializeField]
         private SettingsWindow settingsWindow = null;
@@ -39,11 +35,6 @@ namespace MiniIT.ARKANOID
                 privacyPolicyWindow.SetCloseCallback(HideAll);
             }
 
-            if (skinWindow != null)
-            {
-                skinWindow.SetCloseCallback(HideAll);
-            }
-
             if (settingsWindow != null)
             {
                 settingsWindow.Configure(ShowLeaderBoard, ShowAbout, ShowPrivacyPolicy, HideAll);
@@ -63,11 +54,6 @@ namespace MiniIT.ARKANOID
         public void ShowPrivacyPolicy()
         {
             ShowWindow(privacyPolicyWindow);
-        }
-
-        public void ShowSkin()
-        {
-            ShowWindow(skinWindow);
         }
 
         public void ShowSettings()

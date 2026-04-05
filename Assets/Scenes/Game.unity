@@ -2559,7 +2559,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a5953eea8b58c47a117624182a4055, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  ballPrefab: {fileID: 4070000000000000001, guid: e5e50ee1aa1a4fd9b50bb2d5e9230b21, type: 3}
+  ballPrefabs:
+  - {fileID: 4070000000000000001, guid: 4a1f6b7c8d9e4011a2b3c4d5e6f70811, type: 3}
+  - {fileID: 4070000000000000001, guid: 4a1f6b7c8d9e4011a2b3c4d5e6f70812, type: 3}
+  - {fileID: 4070000000000000001, guid: 4a1f6b7c8d9e4011a2b3c4d5e6f70813, type: 3}
+  - {fileID: 4070000000000000001, guid: 4a1f6b7c8d9e4011a2b3c4d5e6f70814, type: 3}
   spawnPoint: {fileID: 2030403002}
   fallbackSpawnPosition: {x: 0, y: -3.5}
 --- !u!1 &345245579

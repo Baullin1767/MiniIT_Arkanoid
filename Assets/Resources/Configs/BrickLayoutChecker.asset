@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afdd889e713d46745be66431045ca754, type: 3}
-  m_Name: BrickLayoutHourglass
+  m_Name: BrickLayoutChecker
   m_EditorClassIdentifier: 
   rows:
   - YPosition: 5.5
     StartX: -3.5
     Spacing: 1
-    Bricks: 01000000000000000000000000000100
+    Bricks: 01000000000000000000000001000000
   - YPosition: 5
     StartX: -3
     Spacing: 1
-    Bricks: 0000010000000000000001000000
+    Bricks: 010000000000000001000000
   - YPosition: 4.5
     StartX: -3
     Spacing: 1
-    Bricks: 0000000001000000000000000000
+    Bricks: 000000000100000000000000
   - YPosition: 4
     StartX: -2.5
     Spacing: 1
@@ -36,19 +36,19 @@ MonoBehaviour:
   - YPosition: 3
     StartX: -2
     Spacing: 1
-    Bricks: 00000000000000000000
+    Bricks: 0000000000000000
   - YPosition: 2.5
     StartX: -2
     Spacing: 1
-    Bricks: 00000100010001000000
+    Bricks: 0100000001000000
   - YPosition: 2
     StartX: -2
     Spacing: 1
-    Bricks: 00000000000000000000
+    Bricks: 0000000000000000
   - YPosition: 1.5
     StartX: -2
     Spacing: 1
-    Bricks: 00000000000000000000
+    Bricks: 0000000000000000
   - YPosition: 1
     StartX: -2.5
     Spacing: 1
@@ -60,12 +60,12 @@ MonoBehaviour:
   - YPosition: 0
     StartX: -3
     Spacing: 1
-    Bricks: 0000000001000000000000000000
+    Bricks: 000000000100000000000000
   - YPosition: -0.5
     StartX: -3
     Spacing: 1
-    Bricks: 0000010000000000000001000000
+    Bricks: 010000000000000001000000
   - YPosition: -1
     StartX: -3.5
     Spacing: 1
-    Bricks: 01000000000000000000000000000100
+    Bricks: 01000000000000000000000001000000

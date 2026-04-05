@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Data.GameSettings
   defaultLives: 5
   speed: 10
-  limitX: 7.5
+  limitX: 2.6
   launchSpeed: 8
   wallBounceMultiplier: 0.2
   ballSprites:

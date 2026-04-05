@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4070000000000000003}
   - component: {fileID: 4070000000000000005}
   m_Layer: 0
-  m_Name: BallVariant03
+  m_Name: BallVariant04 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.85, y: 0.85, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2112868360339390602, guid: 0ff723e970f5cd7428fd7f3df0351964, type: 3}
+  m_Sprite: {fileID: -3413627670245464070, guid: 0ff723e970f5cd7428fd7f3df0351964, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.75
+  m_Radius: 0.76
 --- !u!50 &4070000000000000005
 Rigidbody2D:
   serializedVersion: 5

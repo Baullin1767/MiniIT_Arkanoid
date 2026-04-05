@@ -294,7 +294,7 @@ namespace MiniIT.ARKANOID
                 return null;
             }
 
-            int startIndex = Random.Range(0, ballPrefabs.Length);
+            int startIndex = Random.Range(0, ballPrefabs.Length-1);
             for (int offset = 0; offset < ballPrefabs.Length; offset++)
             {
                 Ball prefab = ballPrefabs[(startIndex + offset) % ballPrefabs.Length];

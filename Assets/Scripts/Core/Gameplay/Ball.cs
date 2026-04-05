@@ -59,7 +59,7 @@ namespace MiniIT.ARKANOID
             spawnOpportunityConsumed = false;
             mergeLocked = false;
             body.simulated = true;
-            body.velocity = direction.normalized * launchSpeed;
+            body.linearVelocity = direction.normalized * launchSpeed;
             body.angularVelocity = 0.0f;
             body.WakeUp();
             _audioService.PlaySound(AudioService.SoundType.LaunchSound);
@@ -76,7 +76,7 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
-            body.velocity = Vector2.zero;
+            body.linearVelocity = Vector2.zero;
             body.angularVelocity = 0.0f;
             body.simulated = false;
         }
@@ -103,7 +103,7 @@ namespace MiniIT.ARKANOID
             {
                 body.simulated = true;
                 body.position = position;
-                body.velocity = Vector2.zero;
+                body.linearVelocity = Vector2.zero;
                 body.angularVelocity = 0.0f;
                 body.Sleep();
             }
@@ -129,7 +129,7 @@ namespace MiniIT.ARKANOID
                 return false;
             }
 
-            return body.velocity.sqrMagnitude >= ContactEffectMinSpeed * ContactEffectMinSpeed;
+            return body.linearVelocity.sqrMagnitude >= ContactEffectMinSpeed * ContactEffectMinSpeed;
         }
 
         public bool CanParticipateInMerge()

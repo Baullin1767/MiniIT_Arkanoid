@@ -16,6 +16,7 @@ namespace MiniIT.ARKANOID
         private Vector2 fallbackSpawnPosition = new Vector2(0.0f, -3.5f);
 
         private readonly List<Ball> activeBalls = new List<Ball>();
+        private readonly Dictionary<int, Ball> prefabByTier = new Dictionary<int, Ball>();
 
         private DiContainer container = null;
         private IInputService inputService = null;
@@ -30,6 +31,11 @@ namespace MiniIT.ARKANOID
             this.container = container;
             this.inputService = inputService;
             this.signalBus = signalBus;
+        }
+
+        private void Awake()
+        {
+            BuildTierLookup();
         }
 
         private void OnEnable()
@@ -69,10 +75,20 @@ namespace MiniIT.ARKANOID
 
         private void SpawnPendingBall()
         {
+            if (awaitingLaunch)
+            {
+                return;
+            }
+
             Vector2 spawnPosition = GetSpawnPosition();
-            currentBall = SpawnBall(spawnPosition);
-            currentBall?.ResetPosition(spawnPosition);
+            currentBall = SpawnBall(GetRandomBallPrefab(), spawnPosition, true);
             awaitingLaunch = currentBall != null;
+        }
+
+        private void SpawnMergedBall(int tier, Vector2 position)
+        {
+            Ball mergedBall = SpawnBall(GetPrefabForTier(tier), position, false);
+            mergedBall?.SettleAt(position);
         }
 
         private void LaunchBall(Vector2 direction)
@@ -82,8 +98,10 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
+            Ball launchedBall = currentBall;
+            currentBall = null;
             awaitingLaunch = false;
-            currentBall.Launch(direction);
+            launchedBall.Launch(direction);
         }
 
         private void OnBallReset()
@@ -94,6 +112,42 @@ namespace MiniIT.ARKANOID
         private void OnBallReachedTop()
         {
             SpawnPendingBall();
+        }
+
+        private void OnBallContact(BallContactSignal signal)
+        {
+            Ball source = signal.Source;
+            Ball target = signal.Target;
+
+            if (!IsTracked(source) || !IsTracked(target) || source == target || !source.CanTriggerContactEffects())
+            {
+                return;
+            }
+
+            bool shouldSpawnPendingBall = source.TryConsumeSpawnOpportunity();
+            if (shouldSpawnPendingBall)
+            {
+                SpawnPendingBall();
+            }
+
+            if (source.Tier != target.Tier)
+            {
+                return;
+            }
+
+            int nextTier = source.Tier + 1;
+            if (GetPrefabForTier(nextTier) == null || !source.CanParticipateInMerge() || !target.CanParticipateInMerge())
+            {
+                return;
+            }
+
+            source.LockForMerge();
+            target.LockForMerge();
+
+            Vector2 mergedPosition = ((Vector2)source.transform.position + (Vector2)target.transform.position) * 0.5f;
+            RemoveBall(source);
+            RemoveBall(target);
+            SpawnMergedBall(nextTier, mergedPosition);
         }
 
         private void OnLevelReset()
@@ -110,6 +164,7 @@ namespace MiniIT.ARKANOID
 
             signalBus.Subscribe<BallResetSignal>(OnBallReset);
             signalBus.Subscribe<BallReachedTopSignal>(OnBallReachedTop);
+            signalBus.Subscribe<BallContactSignal>(OnBallContact);
             signalBus.Subscribe<LevelResetSignal>(OnLevelReset);
             signalBus.Subscribe<MazeStartedSignal>(OnMazeStarted);
             signalBus.Subscribe<MazeCompletedSignal>(OnMazeEnded);
@@ -125,6 +180,7 @@ namespace MiniIT.ARKANOID
 
             signalBus.Unsubscribe<BallResetSignal>(OnBallReset);
             signalBus.Unsubscribe<BallReachedTopSignal>(OnBallReachedTop);
+            signalBus.Unsubscribe<BallContactSignal>(OnBallContact);
             signalBus.Unsubscribe<LevelResetSignal>(OnLevelReset);
             signalBus.Unsubscribe<MazeStartedSignal>(OnMazeStarted);
             signalBus.Unsubscribe<MazeCompletedSignal>(OnMazeEnded);
@@ -141,6 +197,27 @@ namespace MiniIT.ARKANOID
             isMazeActive = false;
         }
 
+        private void BuildTierLookup()
+        {
+            prefabByTier.Clear();
+
+            if (ballPrefabs == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < ballPrefabs.Length; i++)
+            {
+                Ball prefab = ballPrefabs[i];
+                if (prefab == null)
+                {
+                    continue;
+                }
+
+                prefabByTier[i + 1] = prefab;
+            }
+        }
+
         private Vector2 GetSpawnPosition()
         {
             if (spawnPoint != null)
@@ -151,9 +228,8 @@ namespace MiniIT.ARKANOID
             return fallbackSpawnPosition;
         }
 
-        private Ball SpawnBall(Vector2 position)
+        private Ball SpawnBall(Ball prefab, Vector2 position, bool resetToSpawn)
         {
-            Ball prefab = GetRandomBallPrefab();
             if (prefab == null)
             {
                 return null;
@@ -171,12 +247,44 @@ namespace MiniIT.ARKANOID
             ballObject.transform.SetPositionAndRotation(position, Quaternion.identity);
 
             Ball ball = ballObject.GetComponent<Ball>();
-            if (ball != null)
+            if (ball == null)
             {
-                activeBalls.Add(ball);
+                Destroy(ballObject);
+                return null;
+            }
+
+            ball.SetTier(GetTierForPrefab(prefab));
+            activeBalls.Add(ball);
+
+            if (resetToSpawn)
+            {
+                ball.ResetPosition(position);
             }
 
             return ball;
+        }
+
+        private int GetTierForPrefab(Ball prefab)
+        {
+            foreach (KeyValuePair<int, Ball> entry in prefabByTier)
+            {
+                if (entry.Value == prefab)
+                {
+                    return entry.Key;
+                }
+            }
+
+            return 1;
+        }
+
+        private Ball GetPrefabForTier(int tier)
+        {
+            if (prefabByTier.TryGetValue(tier, out Ball prefab))
+            {
+                return prefab;
+            }
+
+            return null;
         }
 
         private Ball GetRandomBallPrefab()
@@ -197,6 +305,29 @@ namespace MiniIT.ARKANOID
             }
 
             return null;
+        }
+
+        private bool IsTracked(Ball ball)
+        {
+            return ball != null && activeBalls.Contains(ball);
+        }
+
+        private void RemoveBall(Ball ball)
+        {
+            if (ball == null)
+            {
+                return;
+            }
+
+            activeBalls.Remove(ball);
+            if (currentBall == ball)
+            {
+                currentBall = null;
+                awaitingLaunch = false;
+            }
+
+            ball.Stop();
+            Destroy(ball.gameObject);
         }
 
         private void DestroyAllBalls()

@@ -19,6 +19,7 @@ namespace MiniIT.ARKANOID
             Container.DeclareSignal<BrickDestroyedSignal>();
             Container.DeclareSignal<BallResetSignal>();
             Container.DeclareSignal<BallReachedTopSignal>();
+            Container.DeclareSignal<BallContactSignal>();
             Container.DeclareSignal<BrickFieldReachedBottomSignal>();
         }
     }

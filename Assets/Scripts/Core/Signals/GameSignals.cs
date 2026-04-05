@@ -64,6 +64,18 @@ namespace MiniIT.ARKANOID
     {
     }
 
+    public struct BallContactSignal
+    {
+        public Ball Source;
+        public Ball Target;
+
+        public BallContactSignal(Ball source, Ball target)
+        {
+            Source = source;
+            Target = target;
+        }
+    }
+
     public class BrickFieldReachedBottomSignal
     {
     }

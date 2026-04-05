@@ -8,21 +8,29 @@ namespace MiniIT.ARKANOID
     [RequireComponent(typeof(Rigidbody2D))]
     public class Ball : MonoBehaviour
     {
+        private const float ContactEffectMinSpeed = 0.05f;
+
         private float launchSpeed;
 
         [SerializeField]
         private Rigidbody2D body = null;
 
+        private SignalBus signalBus = null;
         private bool launched = false;
-        private bool reachedTop = false;
+        private bool spawnOpportunityConsumed = false;
+        private bool mergeLocked = false;
+        private int tier = 1;
 
         private AudioService _audioService;
 
+        public int Tier => tier;
+
         [Inject]
-        public void Construct(GameSettings gameSettings, AudioService audioService)
+        public void Construct(GameSettings gameSettings, AudioService audioService, SignalBus signalBus)
         {
             launchSpeed = gameSettings.launchSpeed;
             _audioService = audioService;
+            this.signalBus = signalBus;
         }
 
         private void Awake()
@@ -35,6 +43,11 @@ namespace MiniIT.ARKANOID
             Stop();
         }
 
+        public void SetTier(int value)
+        {
+            tier = Mathf.Max(1, value);
+        }
+
         public void Launch(Vector2 direction)
         {
             if (body == null || direction.sqrMagnitude <= Mathf.Epsilon)
@@ -43,7 +56,8 @@ namespace MiniIT.ARKANOID
             }
 
             launched = true;
-            reachedTop = false;
+            spawnOpportunityConsumed = false;
+            mergeLocked = false;
             body.simulated = true;
             body.velocity = direction.normalized * launchSpeed;
             body.angularVelocity = 0.0f;
@@ -54,6 +68,8 @@ namespace MiniIT.ARKANOID
         public void Stop()
         {
             launched = false;
+            spawnOpportunityConsumed = false;
+            mergeLocked = false;
 
             if (body == null)
             {
@@ -68,7 +84,6 @@ namespace MiniIT.ARKANOID
         public void ResetPosition(Vector2 position)
         {
             Stop();
-            reachedTop = false;
 
             if (body != null)
             {
@@ -78,25 +93,77 @@ namespace MiniIT.ARKANOID
             transform.position = position;
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        public void SettleAt(Vector2 position)
         {
-            if (!launched || collision.collider == null)
+            launched = false;
+            spawnOpportunityConsumed = true;
+            mergeLocked = false;
+
+            if (body != null)
             {
-                return;
+                body.simulated = true;
+                body.position = position;
+                body.velocity = Vector2.zero;
+                body.angularVelocity = 0.0f;
+                body.Sleep();
             }
 
-            _audioService.PlaySound(AudioService.SoundType.HitSound);
+            transform.position = position;
         }
 
-        public bool TryMarkReachedTop()
+        public bool TryConsumeSpawnOpportunity()
         {
-            if (reachedTop)
+            if (spawnOpportunityConsumed)
             {
                 return false;
             }
 
-            reachedTop = true;
+            spawnOpportunityConsumed = true;
             return true;
+        }
+
+        public bool CanTriggerContactEffects()
+        {
+            if (mergeLocked || !launched || body == null || !body.simulated)
+            {
+                return false;
+            }
+
+            return body.velocity.sqrMagnitude >= ContactEffectMinSpeed * ContactEffectMinSpeed;
+        }
+
+        public bool CanParticipateInMerge()
+        {
+            return !mergeLocked;
+        }
+
+        public void LockForMerge()
+        {
+            mergeLocked = true;
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider == null)
+            {
+                return;
+            }
+
+            Ball otherBall = collision.collider.GetComponentInParent<Ball>();
+            if (otherBall != null && otherBall != this && CanTriggerContactEffects())
+            {
+                signalBus?.Fire(new BallContactSignal(this, otherBall));
+            }
+
+            if (launched)
+            {
+                _audioService.PlaySound(AudioService.SoundType.HitSound);
+            }
+        }
+
+        public bool TryMarkReachedTop()
+        {
+            return TryConsumeSpawnOpportunity();
         }
     }
 }

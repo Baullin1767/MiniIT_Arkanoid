@@ -1,10 +1,10 @@
+using System;
 using Data;
 using UnityEngine;
 using Zenject;
 
 namespace MiniIT.ARKANOID
 {
-    [RequireComponent(typeof(CircleCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
     public class Ball : MonoBehaviour
     {
@@ -128,7 +128,7 @@ namespace MiniIT.ARKANOID
             {
                 return false;
             }
-
+        
             return body.linearVelocity.sqrMagnitude >= ContactEffectMinSpeed * ContactEffectMinSpeed;
         }
 
@@ -150,7 +150,26 @@ namespace MiniIT.ARKANOID
             }
 
             Ball otherBall = collision.collider.GetComponentInParent<Ball>();
-            if (otherBall != null && otherBall != this && CanTriggerContactEffects())
+            if (otherBall != null && otherBall != this/* && CanTriggerContactEffects()*/)
+            {
+                signalBus?.Fire(new BallContactSignal(this, otherBall));
+            }
+
+            if (launched)
+            {
+                _audioService.PlaySound(AudioService.SoundType.HitSound);
+            }
+        }
+
+        private void OnCollisionStay2D(Collision2D other)
+        {
+            if (other.collider == null)
+            {
+                return;
+            }
+
+            Ball otherBall = other.collider.GetComponentInParent<Ball>();
+            if (otherBall != null && otherBall != this /*&& CanTriggerContactEffects()*/)
             {
                 signalBus?.Fire(new BallContactSignal(this, otherBall));
             }

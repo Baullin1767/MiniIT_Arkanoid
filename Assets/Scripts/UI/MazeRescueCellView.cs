@@ -27,7 +27,7 @@ namespace MiniIT.ARKANOID
             }
 
             image.sprite = color;
-            if(isWall) image.color = Color.clear;
+            // if(isWall) image.color = Color.clear;
         }
     }
 }

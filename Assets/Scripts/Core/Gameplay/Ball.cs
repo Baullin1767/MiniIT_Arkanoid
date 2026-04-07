@@ -124,7 +124,7 @@ namespace MiniIT.ARKANOID
 
         public bool CanTriggerContactEffects()
         {
-            if (mergeLocked || !launched || body == null || !body.simulated)
+            if (/*mergeLocked ||*/ /*!launched ||*/ body == null /*|| !body.simulated*/)
             {
                 return false;
             }

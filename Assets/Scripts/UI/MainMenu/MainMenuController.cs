@@ -3,6 +3,7 @@ using Doozy.Runtime.UIManager.Components;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace MiniIT.ARKANOID
 {
@@ -12,10 +13,11 @@ namespace MiniIT.ARKANOID
         private UIButton playButton = null;
 
         [SerializeField]
-        private UIButton settingsButton = null;
+        private UIButton aboutButton = null;
 
         [SerializeField]
         private UIButton shopButton = null;
+        private UIButton shopButtonClose = null;
 
         [SerializeField]
         private WindowsManager windowsManager = null;
@@ -24,22 +26,24 @@ namespace MiniIT.ARKANOID
 
         private void Awake()
         {
-            if (shopButton != null)
-            {
-                shopButton.gameObject.SetActive(false);
-            }
+            // if (shopButton != null)
+            // {
+            //     shopButton.gameObject.SetActive(false);
+            // }
         }
 
         private void OnEnable()
         {
             RegisterButton(playButton, OnPlayClicked);
-            RegisterButton(settingsButton, OnSettingsClicked);
+            RegisterButton(aboutButton, OnAboutClicked);
+            RegisterButton(shopButton, OnShopClicked);
+            RegisterButton(shopButtonClose, OnShopClickedClose);
         }
 
         private void OnDisable()
         {
             UnregisterButton(playButton, OnPlayClicked);
-            UnregisterButton(settingsButton, OnSettingsClicked);
+            UnregisterButton(aboutButton, OnAboutClicked);
         }
 
         private void RegisterButton(UIButton button, UnityAction handler)
@@ -68,11 +72,25 @@ namespace MiniIT.ARKANOID
             SceneManager.LoadScene(GameSceneName);
         }
 
-        private void OnSettingsClicked()
+        private void OnAboutClicked()
+        {
+            if (windowsManager != null)
+            {
+                windowsManager.ShowAbout();
+            }
+        }
+        private void OnShopClicked()
         {
             if (windowsManager != null)
             {
                 windowsManager.ShowSettings();
+            }
+        }
+        private void OnShopClickedClose()
+        {
+            if (windowsManager != null)
+            {
+                windowsManager.HideAll();
             }
         }
     }

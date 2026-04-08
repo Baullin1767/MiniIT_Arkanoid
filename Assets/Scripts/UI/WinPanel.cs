@@ -40,7 +40,7 @@ namespace MiniIT.ARKANOID
 
         public void Hide()
         {
-            view.Hide();
+            // view.Hide();
         }
 
         public void SetRestartCallback(Action callback)

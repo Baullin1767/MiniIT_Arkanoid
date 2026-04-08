@@ -80,7 +80,7 @@ namespace MiniIT.ARKANOID
 
         private void OnPauseRequested()
         {
-            if (gameManager == null || pausePanel == null || isMazeActive)
+            if (gameManager == null || pausePanel == null)
             {
                 return;
             }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -24,6 +25,7 @@ namespace MiniIT.ARKANOID
         private Ball currentBall = null;
         private bool awaitingLaunch = false;
         private bool isMazeActive = false;
+        private Coroutine launchCoroutine = null;
 
         [Inject]
         public void Construct(DiContainer container, IInputService inputService, SignalBus signalBus)
@@ -63,6 +65,7 @@ namespace MiniIT.ARKANOID
             if (inputService != null && inputService.TryConsumeLaunchDirection(out Vector2 launchDirection))
             {
                 LaunchBall(launchDirection);
+                launchCoroutine = StartCoroutine(Spawn());
             }
         }
 
@@ -83,6 +86,11 @@ namespace MiniIT.ARKANOID
             Vector2 spawnPosition = GetSpawnPosition();
             currentBall = SpawnBall(GetRandomBallPrefab(), spawnPosition, true);
             awaitingLaunch = currentBall != null;
+            if (launchCoroutine!=null)
+            {
+                StopCoroutine(launchCoroutine);
+                launchCoroutine = null;
+            }
         }
 
         private void SpawnMergedBall(int tier, Vector2 position)
@@ -114,12 +122,18 @@ namespace MiniIT.ARKANOID
             SpawnPendingBall();
         }
 
+        private IEnumerator Spawn()
+        {
+            yield return new WaitForSeconds(1f);
+            SpawnPendingBall();
+        }
+
         private void OnBallContact(BallContactSignal signal)
         {
             Ball source = signal.Source;
             Ball target = signal.Target;
 
-            if (!IsTracked(source) || !IsTracked(target) || source == target || !source.CanTriggerContactEffects())
+            if (!IsTracked(source) || !IsTracked(target) || source == target /*|| !source.CanTriggerContactEffects()*/)
             {
                 return;
             }
@@ -128,6 +142,7 @@ namespace MiniIT.ARKANOID
             if (shouldSpawnPendingBall)
             {
                 SpawnPendingBall();
+                Debug.Log("OnBallContact");
             }
 
             if (source.Tier != target.Tier)

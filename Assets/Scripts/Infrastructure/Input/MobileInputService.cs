@@ -34,33 +34,35 @@ namespace MiniIT.ARKANOID
         public bool TryConsumeLaunchDirection(out Vector2 direction)
         {
             direction = Vector2.zero;
-
             Touch[] touches = Input.touches;
-            bool trackedFingerFound = false;
+
+            if (!isSwipeTracking)
+            {
+                for (int i = 0; i < touches.Length; i++)
+                {
+                    Touch touch = touches[i];
+
+                    if (touch.phase != TouchPhase.Began)
+                        continue;
+
+                    if (IsPointerOverUi(touch.fingerId))
+                        continue;
+
+                    isSwipeTracking = true;
+                    swipeFingerId = touch.fingerId;
+                    swipeStartPosition = touch.position;
+                    break;
+                }
+
+                return false;
+            }
 
             for (int i = 0; i < touches.Length; i++)
             {
                 Touch touch = touches[i];
 
-                if (touch.phase == TouchPhase.Began && !isSwipeTracking)
-                {
-                    if (IsPointerOverUi(touch.fingerId))
-                    {
-                        continue;
-                    }
-
-                    isSwipeTracking = true;
-                    swipeFingerId = touch.fingerId;
-                    swipeStartPosition = touch.position;
+                if (touch.fingerId != swipeFingerId)
                     continue;
-                }
-
-                if (!isSwipeTracking || touch.fingerId != swipeFingerId)
-                {
-                    continue;
-                }
-
-                trackedFingerFound = true;
 
                 if (touch.phase == TouchPhase.Canceled)
                 {
@@ -68,24 +70,18 @@ namespace MiniIT.ARKANOID
                     return false;
                 }
 
-                if (touch.phase != TouchPhase.Ended)
+                if (touch.phase == TouchPhase.Ended)
                 {
-                    continue;
+                    Vector2 swipe = touch.position - swipeStartPosition;
+                    ResetSwipeTracking();
+                    return TryBuildLaunchDirection(swipe, out direction);
                 }
 
-                Vector2 swipe = touch.position - swipeStartPosition;
-                ResetSwipeTracking();
-                return TryBuildLaunchDirection(swipe, out direction);
-            }
-
-            if (isSwipeTracking && !trackedFingerFound)
-            {
-                ResetSwipeTracking();
+                return false;
             }
 
             return false;
         }
-
         public void SetLeftPressed(bool isPressed)
         {
             isLeftPressed = isPressed;

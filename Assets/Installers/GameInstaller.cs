@@ -40,7 +40,7 @@ namespace MiniIT.ARKANOID
 
         private void BindInput()
         {
-            if (UseMobileInput())
+            if (/*UseMobileInput()*/true)
             {
                 Container.BindInterfacesAndSelfTo<MobileInputService>().AsSingle();
             }

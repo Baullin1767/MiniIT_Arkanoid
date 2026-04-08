@@ -122,16 +122,6 @@ namespace MiniIT.ARKANOID
             return true;
         }
 
-        public bool CanTriggerContactEffects()
-        {
-            if (/*mergeLocked ||*/ /*!launched ||*/ body == null /*|| !body.simulated*/)
-            {
-                return false;
-            }
-        
-            return body.linearVelocity.sqrMagnitude >= ContactEffectMinSpeed * ContactEffectMinSpeed;
-        }
-
         public bool CanParticipateInMerge()
         {
             return !mergeLocked;
@@ -150,10 +140,7 @@ namespace MiniIT.ARKANOID
             }
 
             Ball otherBall = collision.collider.GetComponentInParent<Ball>();
-            if (otherBall != null && otherBall != this/* && CanTriggerContactEffects()*/)
-            {
-                signalBus?.Fire(new BallContactSignal(this, otherBall));
-            }
+            signalBus?.Fire(new BallContactSignal(this, otherBall));
 
             if (launched)
             {
@@ -169,10 +156,7 @@ namespace MiniIT.ARKANOID
             }
 
             Ball otherBall = other.collider.GetComponentInParent<Ball>();
-            if (otherBall != null && otherBall != this /*&& CanTriggerContactEffects()*/)
-            {
-                signalBus?.Fire(new BallContactSignal(this, otherBall));
-            }
+            signalBus?.Fire(new BallContactSignal(this, otherBall));
 
             if (launched)
             {

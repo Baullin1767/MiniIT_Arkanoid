@@ -68,7 +68,7 @@ namespace MiniIT.ARKANOID
 
             if (lives <= 0)
             {
-                signalBus.Fire<GameOverSignal>();
+                signalBus.Fire(new GameOverSignal(score));
             }
         }
 

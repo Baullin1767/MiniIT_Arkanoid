@@ -52,7 +52,7 @@ namespace MiniIT.ARKANOID
 
         public void Show()
         {
-            EnsureUi();
+            // EnsureUi();
             if (runtimeRoot == null)
             {
                 return;

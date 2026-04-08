@@ -11,5 +11,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30be4b034f97406cab734bcf0fec0421, type: 3}
   m_Name: EditorUISettings
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DoozyEditor::Doozy.Editor.EditorUI.ScriptableObjects.EditorUISettings
   AutoRefresh: 0

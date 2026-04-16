@@ -6,6 +6,9 @@ namespace MiniIT.ARKANOID
 {
     public class UIController : MonoBehaviour
     {
+        private const int WinScoreThreshold = 6000;
+        private const string DownloadGameUrl = "https://www.google.com";
+
         [SerializeField]
         private HUDView hudView = null;
 
@@ -22,6 +25,7 @@ namespace MiniIT.ARKANOID
         private GameManager gameManager = null;
         private MazeRescuePanel mazeRescuePanel = null;
         private bool isMazeActive = false;
+        private bool hasWon = false;
         private const string MainMenuSceneName = "MainMenu";
 
         [Inject]
@@ -69,6 +73,7 @@ namespace MiniIT.ARKANOID
         private void OnRestartFromWin()
         {
             HideAllPanels();
+            hasWon = false;
             gameManager?.RestartGame(false);
         }
 
@@ -147,6 +152,7 @@ namespace MiniIT.ARKANOID
         private void OnLevelReset()
         {
             isMazeActive = false;
+            hasWon = false;
             HideAllPanels();
         }
 
@@ -163,12 +169,26 @@ namespace MiniIT.ARKANOID
             if (hudView != null)
             {
                 hudView.SetScore(signal.Score);
+            }
+
+            if (gameOverPanel != null)
+            {
                 gameOverPanel.SetScore(signal.Score);
+            }
+
+            if (!hasWon && signal.Score >= WinScoreThreshold)
+            {
+                ShowWinPopup(signal.Score);
             }
         }
 
         private void OnGameOver()
         {
+            if (hasWon)
+            {
+                return;
+            }
+
             if (gameOverPanel != null)
             {
                 gameOverPanel.Show();
@@ -190,6 +210,7 @@ namespace MiniIT.ARKANOID
             if (winPanel != null)
             {
                 winPanel.SetRestartCallback(OnRestartFromWin);
+                winPanel.SetDownloadCallback(OnDownloadFromWin);
             }
 
             if (gameOverPanel != null)
@@ -218,6 +239,7 @@ namespace MiniIT.ARKANOID
             if (winPanel != null)
             {
                 winPanel.SetRestartCallback(null);
+                winPanel.SetDownloadCallback(null);
             }
 
             if (gameOverPanel != null)
@@ -244,6 +266,20 @@ namespace MiniIT.ARKANOID
         private void HideMazePanel()
         {
             mazeRescuePanel?.HideImmediate();
+        }
+
+        private void ShowWinPopup(int score)
+        {
+            hasWon = true;
+            HideAllPanels();
+            gameManager?.PauseGame();
+            signalBus?.Fire<LevelCompletedSignal>();
+            winPanel?.Show(score);
+        }
+
+        private void OnDownloadFromWin()
+        {
+            Application.OpenURL(DownloadGameUrl);
         }
     }
 }

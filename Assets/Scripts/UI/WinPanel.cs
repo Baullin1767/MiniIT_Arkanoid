@@ -10,6 +10,8 @@ namespace MiniIT.ARKANOID
 {
     public class WinPanel : MonoBehaviour
     {
+        private const string DownloadButtonLabel = "Download the game";
+
         [SerializeField]
         private TMP_Text scoreText = null;
 
@@ -21,10 +23,12 @@ namespace MiniIT.ARKANOID
         private UIView view = null;
 
         private Action restartCallback = null;
+        private Action downloadCallback = null;
 
         private void Awake()
         {
             view =  GetComponent<UIView>();
+            ConfigureForDownloadAction();
             view.Hide();
         }
 
@@ -34,13 +38,14 @@ namespace MiniIT.ARKANOID
             {
                 scoreText.text = score.ToString();
             }
-            
+
+            ConfigureForDownloadAction();
             view.Show();
         }
 
         public void Hide()
         {
-            // view.Hide();
+            view.Hide();
         }
 
         public void SetRestartCallback(Action callback)
@@ -48,17 +53,17 @@ namespace MiniIT.ARKANOID
             restartCallback = callback;
         }
 
+        public void SetDownloadCallback(Action callback)
+        {
+            downloadCallback = callback;
+        }
+
         private void OnEnable()
         {
             if (restartButton != null)
             {
                 restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event ??= new UnityEvent();
-                restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.AddListener(OnRestartClicked);
-            }
-            if (nextButton != null)
-            {
-                nextButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event ??= new UnityEvent();
-                nextButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.AddListener(OnRestartClicked);
+                restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.AddListener(OnDownloadClicked);
             }
         }
 
@@ -66,11 +71,7 @@ namespace MiniIT.ARKANOID
         {
             if (restartButton != null)
             {
-                restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.RemoveListener(OnRestartClicked);
-            }
-            if (nextButton != null)
-            {
-                nextButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.RemoveListener(OnRestartClicked);
+                restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.RemoveListener(OnDownloadClicked);
             }
         }
 
@@ -79,6 +80,31 @@ namespace MiniIT.ARKANOID
             if (restartCallback != null)
             {
                 restartCallback.Invoke();
+            }
+        }
+
+        private void OnDownloadClicked()
+        {
+            downloadCallback?.Invoke();
+        }
+
+        private void ConfigureForDownloadAction()
+        {
+            if (restartButton != null)
+            {
+                // TMP_Text label = restartButton.GetComponentInChildren<TMP_Text>(true);
+                // if (label != null)
+                // {
+                //     label.gameObject.SetActive(true);
+                //     label.text = DownloadButtonLabel;
+                // }
+
+                restartButton.gameObject.SetActive(true);
+            }
+
+            if (nextButton != null)
+            {
+                nextButton.gameObject.SetActive(false);
             }
         }
     }

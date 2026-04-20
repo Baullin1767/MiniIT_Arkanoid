@@ -99,4 +99,8 @@ namespace MiniIT.ARKANOID
     public class BrickFieldReachedBottomSignal
     {
     }
+
+    public class PlayableAdTimeoutSignal
+    {
+    }
 }

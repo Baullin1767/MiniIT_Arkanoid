@@ -39,6 +39,16 @@ namespace MiniIT.ARKANOID
             pauseCallback = callback;
         }
 
+        public void SetPauseButtonVisible(bool isVisible)
+        {
+            if (pauseButton == null)
+            {
+                return;
+            }
+
+            pauseButton.gameObject.SetActive(isVisible);
+        }
+
         public void SetScore(int value)
         {
             if (scoreText == null)

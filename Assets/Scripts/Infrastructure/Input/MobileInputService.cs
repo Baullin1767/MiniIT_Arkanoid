@@ -7,6 +7,7 @@ namespace MiniIT.ARKANOID
     {
         private const float MovementDeadZone = 0.1f;
         private const float MinimumSwipeDistancePixels = 50.0f;
+        private const float MouseDragRangePixels = 120.0f;
 
         private bool isLeftPressed = false;
         private bool isRightPressed = false;
@@ -14,12 +15,19 @@ namespace MiniIT.ARKANOID
         private bool isSwipeTracking = false;
         private int swipeFingerId = -1;
         private Vector2 swipeStartPosition = Vector2.zero;
+        private bool isMouseSwipeTracking = false;
+        private Vector2 mouseSwipeStartPosition = Vector2.zero;
 
         public Vector2 GetMoveInput()
         {
             if (joystickMovement.sqrMagnitude > 0.0f)
             {
                 return joystickMovement;
+            }
+
+            if (TryGetMouseDragMovement(out Vector2 mouseMovement))
+            {
+                return mouseMovement;
             }
 
             if (isLeftPressed == isRightPressed)
@@ -35,6 +43,11 @@ namespace MiniIT.ARKANOID
         {
             direction = Vector2.zero;
             Touch[] touches = Input.touches;
+
+            if (touches.Length == 0)
+            {
+                return TryConsumeMouseLaunchDirection(out direction);
+            }
 
             if (!isSwipeTracking)
             {
@@ -82,6 +95,7 @@ namespace MiniIT.ARKANOID
 
             return false;
         }
+
         public void SetLeftPressed(bool isPressed)
         {
             isLeftPressed = isPressed;
@@ -104,6 +118,44 @@ namespace MiniIT.ARKANOID
         private float ApplyDeadZone(float value)
         {
             return Mathf.Abs(value) < MovementDeadZone ? 0.0f : value;
+        }
+
+        private bool TryGetMouseDragMovement(out Vector2 movement)
+        {
+            movement = Vector2.zero;
+
+            if (Input.touchCount > 0)
+            {
+                ResetMouseSwipeTracking();
+                return false;
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                isMouseSwipeTracking = !IsPointerOverUi();
+                mouseSwipeStartPosition = Input.mousePosition;
+            }
+
+            if (!isMouseSwipeTracking)
+            {
+                return false;
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                Vector2 delta = (Vector2)Input.mousePosition - mouseSwipeStartPosition;
+                movement = Vector2.ClampMagnitude(delta / MouseDragRangePixels, 1.0f);
+                movement.x = ApplyDeadZone(movement.x);
+                movement.y = ApplyDeadZone(movement.y);
+                return movement.sqrMagnitude > 0.0f;
+            }
+
+            if (!Input.GetMouseButtonUp(0))
+            {
+                ResetMouseSwipeTracking();
+            }
+
+            return false;
         }
 
         private static bool TryBuildLaunchDirection(Vector2 swipe, out Vector2 direction)
@@ -130,11 +182,48 @@ namespace MiniIT.ARKANOID
             return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId);
         }
 
+        private static bool IsPointerOverUi()
+        {
+            return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+        }
+
         private void ResetSwipeTracking()
         {
             isSwipeTracking = false;
             swipeFingerId = -1;
             swipeStartPosition = Vector2.zero;
+        }
+
+        private bool TryConsumeMouseLaunchDirection(out Vector2 direction)
+        {
+            direction = Vector2.zero;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                isMouseSwipeTracking = !IsPointerOverUi();
+                mouseSwipeStartPosition = Input.mousePosition;
+            }
+
+            if (isMouseSwipeTracking && !Input.GetMouseButton(0) && !Input.GetMouseButtonUp(0))
+            {
+                ResetMouseSwipeTracking();
+                return false;
+            }
+
+            if (!Input.GetMouseButtonUp(0) || !isMouseSwipeTracking)
+            {
+                return false;
+            }
+
+            Vector2 swipe = (Vector2)Input.mousePosition - mouseSwipeStartPosition;
+            ResetMouseSwipeTracking();
+            return TryBuildLaunchDirection(swipe, out direction);
+        }
+
+        private void ResetMouseSwipeTracking()
+        {
+            isMouseSwipeTracking = false;
+            mouseSwipeStartPosition = Vector2.zero;
         }
     }
 }

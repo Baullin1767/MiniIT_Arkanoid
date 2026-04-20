@@ -14,5 +14,10 @@ namespace Data
         public float launchSpeed = 8.0f;
         public float wallBounceMultiplier = 0.9f;
         public Sprite[] ballSprites;
+
+        [Header("Playable Ad")]
+        public bool enablePlayableAdMode = false;
+        public float playableAdDurationSeconds = 20.0f;
+        public string playableAdCtaUrl = "https://www.google.com";
     }
 }

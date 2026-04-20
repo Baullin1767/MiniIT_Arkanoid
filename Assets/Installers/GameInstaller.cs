@@ -14,6 +14,7 @@ namespace MiniIT.ARKANOID
         {
             Container.BindInstance(ResolveGameSettings()).AsSingle();
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayableAdMode>().AsSingle().NonLazy();
             Container.Bind<LevelManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<TweenEffects>().AsSingle();
 

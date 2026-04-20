@@ -22,7 +22,6 @@ namespace MiniIT.ARKANOID
         
         private UIView view = null;
 
-        private Action restartCallback = null;
         private Action downloadCallback = null;
 
         private void Awake()
@@ -48,11 +47,6 @@ namespace MiniIT.ARKANOID
             view.Hide();
         }
 
-        public void SetRestartCallback(Action callback)
-        {
-            restartCallback = callback;
-        }
-
         public void SetDownloadCallback(Action callback)
         {
             downloadCallback = callback;
@@ -72,14 +66,6 @@ namespace MiniIT.ARKANOID
             if (restartButton != null)
             {
                 restartButton.behaviours.AddBehaviour(UIBehaviour.Name.PointerClick).Event.RemoveListener(OnDownloadClicked);
-            }
-        }
-
-        private void OnRestartClicked()
-        {
-            if (restartCallback != null)
-            {
-                restartCallback.Invoke();
             }
         }
 

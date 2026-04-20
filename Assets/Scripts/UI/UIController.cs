@@ -1,3 +1,4 @@
+using Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -7,7 +8,7 @@ namespace MiniIT.ARKANOID
     public class UIController : MonoBehaviour
     {
         private const int WinScoreThreshold = 6000;
-        private const string DownloadGameUrl = "https://www.google.com";
+        private const string DefaultDownloadGameUrl = "https://www.google.com";
 
         [SerializeField]
         private HUDView hudView = null;
@@ -23,16 +24,23 @@ namespace MiniIT.ARKANOID
 
         private SignalBus signalBus = null;
         private GameManager gameManager = null;
+        private GameSettings gameSettings = null;
         private MazeRescuePanel mazeRescuePanel = null;
         private bool isMazeActive = false;
-        private bool hasWon = false;
+        private bool isSessionFinished = false;
+        private int currentScore = 0;
         private const string MainMenuSceneName = "MainMenu";
 
         [Inject]
-        public void Construct(SignalBus signalBus, GameManager gameManager, [InjectOptional] MazeRescuePanel mazeRescuePanel)
+        public void Construct(
+            SignalBus signalBus,
+            GameManager gameManager,
+            GameSettings gameSettings,
+            [InjectOptional] MazeRescuePanel mazeRescuePanel)
         {
             this.signalBus = signalBus;
             this.gameManager = gameManager;
+            this.gameSettings = gameSettings;
             this.mazeRescuePanel = mazeRescuePanel;
         }
 
@@ -70,13 +78,6 @@ namespace MiniIT.ARKANOID
             HideMazePanel();
         }
 
-        private void OnRestartFromWin()
-        {
-            HideAllPanels();
-            hasWon = false;
-            gameManager?.RestartGame(false);
-        }
-
         private void OnRestartFromGameOver()
         {
             HideAllPanels();
@@ -85,7 +86,7 @@ namespace MiniIT.ARKANOID
 
         private void OnPauseRequested()
         {
-            if (gameManager == null || pausePanel == null)
+            if (IsPlayableAdModeEnabled || gameManager == null || pausePanel == null)
             {
                 return;
             }
@@ -128,6 +129,7 @@ namespace MiniIT.ARKANOID
             signalBus.Subscribe<LivesChangedSignal>(OnLivesChanged);
             signalBus.Subscribe<ScoreChangedSignal>(OnScoreChanged);
             signalBus.Subscribe<GameOverSignal>(OnGameOver);
+            signalBus.Subscribe<PlayableAdTimeoutSignal>(OnPlayableAdTimeout);
             signalBus.Subscribe<MazeStartedSignal>(OnMazeStarted);
             signalBus.Subscribe<MazeCompletedSignal>(OnMazeEnded);
             signalBus.Subscribe<MazeFailedSignal>(OnMazeEnded);
@@ -144,6 +146,7 @@ namespace MiniIT.ARKANOID
             signalBus.Unsubscribe<LivesChangedSignal>(OnLivesChanged);
             signalBus.Unsubscribe<ScoreChangedSignal>(OnScoreChanged);
             signalBus.Unsubscribe<GameOverSignal>(OnGameOver);
+            signalBus.Unsubscribe<PlayableAdTimeoutSignal>(OnPlayableAdTimeout);
             signalBus.Unsubscribe<MazeStartedSignal>(OnMazeStarted);
             signalBus.Unsubscribe<MazeCompletedSignal>(OnMazeEnded);
             signalBus.Unsubscribe<MazeFailedSignal>(OnMazeEnded);
@@ -152,7 +155,8 @@ namespace MiniIT.ARKANOID
         private void OnLevelReset()
         {
             isMazeActive = false;
-            hasWon = false;
+            isSessionFinished = false;
+            currentScore = 0;
             HideAllPanels();
         }
 
@@ -166,6 +170,8 @@ namespace MiniIT.ARKANOID
 
         private void OnScoreChanged(ScoreChangedSignal signal)
         {
+            currentScore = signal.Score;
+
             if (hudView != null)
             {
                 hudView.SetScore(signal.Score);
@@ -176,7 +182,7 @@ namespace MiniIT.ARKANOID
                 gameOverPanel.SetScore(signal.Score);
             }
 
-            if (!hasWon && signal.Score >= WinScoreThreshold)
+            if (!isSessionFinished && signal.Score >= WinScoreThreshold)
             {
                 ShowWinPopup(signal.Score);
             }
@@ -184,10 +190,18 @@ namespace MiniIT.ARKANOID
 
         private void OnGameOver()
         {
-            if (hasWon)
+            if (isSessionFinished)
             {
                 return;
             }
+
+            if (IsPlayableAdModeEnabled)
+            {
+                ShowPlayableAdCta(currentScore);
+                return;
+            }
+
+            isSessionFinished = true;
 
             if (gameOverPanel != null)
             {
@@ -209,7 +223,6 @@ namespace MiniIT.ARKANOID
         {
             if (winPanel != null)
             {
-                winPanel.SetRestartCallback(OnRestartFromWin);
                 winPanel.SetDownloadCallback(OnDownloadFromWin);
             }
 
@@ -224,6 +237,7 @@ namespace MiniIT.ARKANOID
             if (hudView != null)
             {
                 hudView.SetPauseCallback(OnPauseRequested);
+                hudView.SetPauseButtonVisible(!IsPlayableAdModeEnabled);
             }
 
             if (pausePanel != null)
@@ -238,7 +252,6 @@ namespace MiniIT.ARKANOID
         {
             if (winPanel != null)
             {
-                winPanel.SetRestartCallback(null);
                 winPanel.SetDownloadCallback(null);
             }
 
@@ -270,7 +283,7 @@ namespace MiniIT.ARKANOID
 
         private void ShowWinPopup(int score)
         {
-            hasWon = true;
+            isSessionFinished = true;
             HideAllPanels();
             gameManager?.PauseGame();
             signalBus?.Fire<LevelCompletedSignal>();
@@ -279,7 +292,38 @@ namespace MiniIT.ARKANOID
 
         private void OnDownloadFromWin()
         {
-            Application.OpenURL(DownloadGameUrl);
+            Application.OpenURL(ResolveDownloadUrl());
         }
+
+        private void OnPlayableAdTimeout()
+        {
+            if (isSessionFinished)
+            {
+                return;
+            }
+
+            ShowPlayableAdCta(currentScore);
+        }
+
+        private void ShowPlayableAdCta(int score)
+        {
+            isSessionFinished = true;
+            HideAllPanels();
+            gameManager?.PauseGame();
+            winPanel?.Show(score);
+        }
+
+        private string ResolveDownloadUrl()
+        {
+            if (gameSettings != null && !string.IsNullOrWhiteSpace(gameSettings.playableAdCtaUrl))
+            {
+                return gameSettings.playableAdCtaUrl;
+            }
+
+            return DefaultDownloadGameUrl;
+        }
+
+        private bool IsPlayableAdModeEnabled =>
+            gameSettings != null && gameSettings.enablePlayableAdMode;
     }
 }

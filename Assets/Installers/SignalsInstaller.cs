@@ -23,6 +23,7 @@ namespace MiniIT.ARKANOID
             Container.DeclareSignal<BallReachedTopSignal>();
             Container.DeclareSignal<BallContactSignal>();
             Container.DeclareSignal<BrickFieldReachedBottomSignal>();
+            Container.DeclareSignal<PlayableAdTimeoutSignal>();
         }
     }
 }
